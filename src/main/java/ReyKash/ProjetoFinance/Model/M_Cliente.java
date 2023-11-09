@@ -12,7 +12,6 @@ public class M_Cliente {
     private String email;
     private String perfilInvestidor;
 
-
     public Long getId_cliente() {
         return id_cliente;
     }
