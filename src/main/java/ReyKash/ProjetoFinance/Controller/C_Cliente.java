@@ -1,11 +1,13 @@
 package ReyKash.ProjetoFinance.Controller;
 
 import ReyKash.ProjetoFinance.Service.S_Cliente;
-import ReyKash.ProjetoFinance.Service.S_Investimento;
+import ReyKash.ProjetoFinance.Service.S_Investimentos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/clientes")
@@ -18,14 +20,12 @@ public class C_Cliente {
     }
 
     @GetMapping("/CarteiraInvestimentos")
-    public String getCarteiraInvestimentos(){
+    public String getCarteiraInvestimentos(Model model){
+        model.addAttribute("investimentoCliente", S_Investimentos.listarInvestimentoCliente());
         return "carteiraInvestimentos";
     }
 
-    @GetMapping("/edit/{id}")
-    public String getCarteiraCliente(Model model){
-        model.addAttribute("investimento", S_Investimento.listarInvestimentos());
-        return "carteiraInvestimentos";
-    }
+
+
 
 }
