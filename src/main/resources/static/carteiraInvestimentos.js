@@ -211,4 +211,36 @@ pieSeries.events.on("datavalidated", function() {
   pieSeries.slices.getIndex(0).set("active", true);
 });
 
+
+// Obtendo os dados do SQL
+  var dataFromSQL = [
+    // Substitua esta estrutura com os dados reais da sua view investimentoCliente
+    {
+      cliente: "Cliente 1",
+      investimento: "Sem Investimento",
+      valor: 500
+    },
+    {
+      cliente: "Cliente 2",
+      investimento: "Investimento A",
+      valor: 1200
+    },
+    // ... Adicione os demais dados conforme necessário
+  ];
+
+  // Criando a estrutura de dados para o gráfico
+  var data = dataFromSQL.map(function(item) {
+    return {
+      category: item.cliente,
+      value: item.valor,
+      sliceSettings: {
+        fill: am5.color(0x68ad5c), // Cor da fatia do gráfico de pizza (ajuste conforme necessário)
+      },
+      breakdown: [
+        // Adicione os detalhes específicos do investimento aqui, se necessário
+      ]
+    };
+  });
+
+
 }); // end am5.ready()

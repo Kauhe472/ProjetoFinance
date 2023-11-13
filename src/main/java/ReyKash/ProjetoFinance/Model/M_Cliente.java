@@ -12,6 +12,16 @@ public class M_Cliente {
     private String email;
     private String perfilInvestidor;
 
+    private String senha;
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public Long getId_cliente() {
         return id_cliente;
     }

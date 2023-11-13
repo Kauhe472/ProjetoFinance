@@ -1,8 +1,6 @@
 package ReyKash.ProjetoFinance.Repository;
 
 import ReyKash.ProjetoFinance.Model.M_Cliente;
-import ReyKash.ProjetoFinance.Model.M_Investimento;
-import ReyKash.ProjetoFinance.Model.M_InvestimentoCliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +17,7 @@ public interface R_Cliente extends JpaRepository<M_Cliente, Long> {
     @Query(value="select * from investimentoCliente", nativeQuery = true)
     ArrayList<Object> listInvestimento();
 
-
+    @Query(value = "SELECT * FROM PESSOA WHERE nome = :nome", nativeQuery = true)
+    M_Cliente findByNome(@Param("nome") String nome);
 
 }

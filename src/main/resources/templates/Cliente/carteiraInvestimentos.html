@@ -42,7 +42,9 @@
     <h2>Grafico do Cliente</h2>
     <div id="chartdiv" th:text="${dadosGrafico}"></div>
 
-    <span th:each="cliente : ${investimentoCliente}" th:text="${cliente[1]}"></span>
+    <span th:each="clientes : ${investimentoCliente}" th:text="${clientes[1]}"></span>
+    <span th:each="clientes : ${investimentoCliente}" th:text="${clientes[2]}"></span>
+    <span th:each="clientes : ${investimentoCliente}" th:text="${clientes[3]}"></span>
 
 </body>
 </html>

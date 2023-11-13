@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/clientes")
 public class C_Cliente {
 
-    @GetMapping("/tabelaClientes")
+    @GetMapping("/TabelaClientes")
     public String getTabelaClientes(Model model) {
         model.addAttribute("clientes", S_Cliente.listarClientes());
         return "tabelaClientes";
