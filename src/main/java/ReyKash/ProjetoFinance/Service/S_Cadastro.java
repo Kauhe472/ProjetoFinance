@@ -33,15 +33,6 @@ public class S_Cadastro {
             podeSalvar = false;
         }
 
-        if(podeSalvar){
-            M_Cliente m_pessoa = new M_Cliente();
-            m_pessoa.setNome(nome);
-            m_pessoa.setEmail(email);
-            m_pessoa.setPerfilInvestidor(perfilInvestidor);
-            m_pessoa.setSenha(senha);
-            r_cliente.save(m_pessoa);
-            mensagem += "Cadastro Salvo com Sucesso!";
-        }
 
         return mensagem;
     }

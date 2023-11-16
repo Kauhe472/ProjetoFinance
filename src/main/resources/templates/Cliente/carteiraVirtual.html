@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie.edge">
+    <script src="https://kit.fontawesome.com/d37c5443c6.js" crossorigin="anonymous"></script>
+    <title>Carteira Virutal</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+
+        :root {
+            --bg-color: #640000;
+            --bg-card: #f4f4f4;
+            --font-color: #1c1c1c;
+            --font-highlight: #bd93f9;
+        }
+
+        /===== Body =====/
+
+        body {
+            background-color: #640000; /* Cor de fundo */
+            font-family: var(--font);
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .centered {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            width: 1100px;
+            background: var(--bg-card);
+            color: var(--title-color);
+            padding: 3rem;
+            border-radius: 40px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 4);
+            display: block;
+            background: #ffc970;
+        }
+
+        /===== Header =====/
+
+        .perfil {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .title {
+            margin-left: 1rem;
+        }
+
+        .title h1 {
+            font-weight: bolder;
+            font-size: 1.8rem;
+        }
+
+        .title h3 {
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        .title p {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #949494;
+            margin-bottom: 0.3rem;
+        }
+
+
+ /* Balão flutuante */
+.floating-balloon {
+    position: absolute;
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: none;
+    top: 300px; /* Ajusta a posição vertical para alinhar com o botão */
+    left: 20%; /* Centraliza o balão horizontalmente */
+    transform: translateX(-50%); /* Centraliza o balão horizontalmente */
+}
+
+
+.floating-balloon::before {
+    content: "";
+    position: absolute;
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--purple) transparent transparent transparent;
+    top: -16px; /* Ajusta esta posição vertical para alinhar com o botão */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: blinkPurple 1s infinite; /* Adiciona animação de piscar roxo */
+}
+
+@keyframes blinkPurple {
+    0%, 50%, 100% {
+        border-color: var(--purple) transparent transparent transparent;
+    }
+    25%, 75% {
+        border-color: #000 transparent transparent transparent;
+    }
+}
+
+.floating-balloon.blink-black::before {
+    animation: blinkBlack 1s infinite; /* Adiciona animação de piscar preto */
+}
+
+@keyframes blinkBlack {
+    0%, 50%, 100% {
+        border-color: #000 transparent transparent transparent;
+    }
+    25%, 75% {
+        border-color: var(--purple) transparent transparent transparent;
+    }
+}
+  /* Estilos dos botões */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    width: 300px; /* Defina a largura desejada para os botões */
+    display: inline-block;
+    padding: 10px; /* Ajuste o preenchimento conforme necessário */
+    background-color: #640000;
+    color: white;
+    border: 2px solid #640000;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos da nav-link (mantém o fundo branco) */
+a.nav-link.active {
+    width: 300px; /* Defina a largura desejada para a nav-link */
+    display: inline-block;
+    padding: 10px 20px; /* Ajuste o preenchimento conforme necessário */
+    background-color: white; /* Fundo branco */
+    color: #640000; /* Texto em vermelho (#640000) */
+    border: 2px solid #640000;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a.nav-link.active:hover {
+     background: linear-gradient(45deg,  #ffc970, #640000);
+    color: #640000; /* Texto em vermelho (#640000) */
+}
+
+
+
+    </style>
+</head>
+
+<body>
+<div class="container centered">
+    <header class="perfil">
+        <div class="perfil-image">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="title">
+            <h1>nome do usuário</h1>
+        </div>
+    </header>
+
+    <main class="projetos client-card">
+        <!-- Conteúdo do cliente ou tabela aqui -->
+    </main>
+
+    <div class="button-container">
+        <button id="perfilButton">Visualizar perfil</button>
+        <div class="floating-balloon" id="profileBalloon">
+            <!-- Conteúdo do perfil aqui -->
+            <p>🔢Telefone: </p>
+            <p>💰Email: </p>
+            <p>🃏Nome:</p>
+            <p>🃏Data de nacimento:</p>
+        </div>
+        <button id="resumoButton">Ver resumo</button>
+        <div class="button-container">
+            <a class="nav-link active" aria-current="page" href="/carteiraInvestimentos"> Carteira de Investimentos</a>
+        </div>
+    </div>
+</div>
+
+<div class="perfil-image">
+    <img src="homemuie.png" alt="" style="position: relative;opacity: 0.7;width: 100%;height: 100%;z-index: -1;">
+</div>
+<script>
+    const perfilButton = document.getElementById("perfilButton");
+    const profileBalloon = document.getElementById("profileBalloon");
+
+    perfilButton.addEventListener("click", () => {
+        if (profileBalloon.style.display === "block") {
+            profileBalloon.style.display = "none";
+        } else {
+            profileBalloon.style.display = "block";
+        }
+    });
+</script>
+</body>
+
+</html>
