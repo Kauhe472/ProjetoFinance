@@ -10,17 +10,10 @@ public class M_Cliente {
     private Long id_cliente;
     private String nome;
     private String email;
-    private String perfilInvestidor;
+    private String cpf;
+    private String idade;
 
     private String senha;
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     public Long getId_cliente() {
         return id_cliente;
@@ -46,11 +39,27 @@ public class M_Cliente {
         this.email = email;
     }
 
-    public String getPerfilInvestidor() {
-        return perfilInvestidor;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setPerfilInvestidor(String perfilInvestidor) {
-        this.perfilInvestidor = perfilInvestidor;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

@@ -11,7 +11,7 @@ public class M_Consultor {
     private Long id;
     private String nome;
     private String email;
-    private String telefone;
+    private String cpf;
     private int idade;
     private String senha;
 

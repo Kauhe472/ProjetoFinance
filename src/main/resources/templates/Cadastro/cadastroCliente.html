@@ -1,22 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Adicione o CSS do Bootstrap -->
+    <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- Adicione o JavaScript do Bootstrap (incluindo o Popper.js) -->
+    <!-- Add Bootstrap JavaScript (including Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
-    <!-- Adicione o CSS do Font Awesome -->
+    <!-- Add Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <link rel="stylesheet" href="../../CSS/cadastroConsultor.css">
+    <link rel="stylesheet" href="../../CSS/cadastroCliente.css">
 
 </head>
 <body>
@@ -33,37 +33,32 @@
                                 <div class="section text-center">
                                     <h4 class="mb-4 pb-2">Cadastre-se</h4>
 
+                                    <div  class="form-group mt-2">
+                                        <select class="option" id="optionForm">
+
+                                            <option  selected disabled><h4>Quem é você?</h4></option>
+                                            <option value="cliente" href="/home">Cliente</option>
+                                            <option value="consultor" href="/cadastroConsultor">Consultor</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group mt-2">
                                         <input type="text" name="nome" class="form-style" placeholder="Your Name"
                                                id="nome" autocomplete="off">
-                                        <i class="input-icon fas fa-user"></i> <!-- Substituí a classe do ícone -->
+                                        <i class="input-icon fas fa-user"></i>
                                     </div>
                                     <div class="form-group mt-2">
                                         <input type="email" name="email" class="form-style" placeholder="Your Email"
                                                id="email" autocomplete="off">
-                                        <i class="input-icon fas fa-envelope"></i> <!-- Substituí a classe do ícone -->
+                                        <i class="input-icon fas fa-envelope"></i>
                                     </div>
-
                                     <div class="form-group mt-2">
                                         <input type="password" name="senha" class="form-style"
                                                placeholder="Your Password" id="senha" autocomplete="off">
-                                        <i class="input-icon fas fa-lock"></i> <!-- Substituí a classe do ícone -->
+                                        <i class="input-icon fas fa-lock"></i>
                                     </div>
 
-                                    <a href="/home" class="btn mt-4">Submit</a>
 
-                                    <h4 class="mb-4 pb-2">Quem é você?</h4>
-                                    <div class="registration-options mt-4">
-                                        <label for="Cliente">
-                                            <input type="radio" name="radSize" id="Cliente" value="small"
-                                                   checked="checked"/>
-                                            Cliente
-                                        </label>
-                                        <label for="Colsultor">
-                                            <input type="radio" name="radSize" id="Colsultor" value="medium"/>
-                                            Consultor
-                                        </label>
-                                    </div>
+                                    <a href="#" class="btn mt-4" id="submitButton">Submit</a>
 
                                 </div>
                             </div>
@@ -74,9 +69,31 @@
         </div>
     </div>
 </div>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Identificando o elemento select
+        const selectOption = document.getElementById('optionForm');
+
+        // Adicionando um ouvinte de evento à mudança no select
+        selectOption.addEventListener('change', function () {
+            // Obtendo o valor selecionado
+            const selectedValue = selectOption.value;
+
+            // Redirecionando o usuário com base na opção selecionada
+            if (selectedValue === 'cliente') {
+                window.location.href = '/cadastro';
+            } else if (selectedValue === 'consultor') {
+                window.location.href = '/cadastroConsultor';
+            }
+        });
+    });
+</script>
+
 
 
 <img src="homem.png" alt="" class="logo"></a>
+
 
 </body>
 </html>

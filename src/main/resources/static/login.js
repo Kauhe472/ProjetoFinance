@@ -10,8 +10,8 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-            var formulario = document.getElementById("seuFormulario");
-            var botaoSubmit = document.getElementById("btnSubmit");
+            let formulario = document.getElementById("seuFormulario");
+            let botaoSubmit = document.getElementById("btnSubmit");
 
             formulario.addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {

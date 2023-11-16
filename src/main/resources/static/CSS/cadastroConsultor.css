@@ -1,38 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Adicione o CSS do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- Adicione o JavaScript do Bootstrap (incluindo o Popper.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-            crossorigin="anonymous"></script>
-    <!-- Adicione o CSS do Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <script src="login.js" defer></script>
-
-    <style>
-        body {
-         font-family: 'Poppins', sans-serif;
-         font-weight: 300;
-         font-size: 15px;
-         line-height: 1.7;
-         color: #c4c3ca;
-         background: linear-gradient(to bottom, #000000,  #640000);
-         overflow-x: hidden;
-         margin: 0;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         height: 100vh;
-     }
+  body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #c4c3ca;
+            background: linear-gradient(to bottom, #640000, #000000);
+            overflow-x: hidden;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
         a {
             cursor: pointer;
@@ -250,65 +229,18 @@
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 
-        .logo {
-            position: absolute;
-            top: 0px;
-            right: 1450px;
-            height: 963px;
-            display: block;
-            z-index: 90;
-            transition: all 250ms linear;
-        }
+         .logo {
+                   position: absolute;
+                   top: 0px;
+                   right: 0px;
+                   height: 963px;
+                   display: block;
+                   z-index: 90;
+                   transition: all 250ms linear;
+               }
 
-        .logo img {
-            height: 20px;
-            width: auto;
-            display: block;
-        }
-</style>
-
-</head>
-<body>
-<div class="container">
-
-
-    <div class="section">
-        <div class="container">
-            <div class="row full-height justify-content-center">
-                <div class="col-12 text-center align-self-center py-5">
-                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log">
-                    <div class="card-3d-wrap mx-auto">
-                        <div class="card-3d-wrapper">
-                            <div class="card-front">
-                                <div class="center-wrap">
-                                    <form id="seuFormulario">
-
-
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3"><i class="fas fa-user"></i> Log In</h4>
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-style" placeholder="Your Email" id="email" autocomplete="off">
-                                            <i class="fas fa-envelope input-icon"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="senha" autocomplete="off">
-                                            <i class="fas fa-lock input-icon"></i>
-                                        </div>
-                                        <a href="home" id="btnSubmit" type="button" class="btn mt-4"><i class="fas fa-check"></i> Submit</a>
-                                        <p class="mb-0 mt-4 text-center"><a href="/cadastro" class="link">Não tem uma conta? Crie uma!</a></p>
-
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <img src="mulher.png" alt="" class="logo"></a>
-
-</div>
-</body>
-</html>
+               .logo img {
+                   height: 20px;
+                   width: auto;
+                   display: block;
+               }

@@ -12,7 +12,7 @@ public class S_Cadastro {
         this.r_cliente = r_cliente;
     }
 
-    public static String validaCadastro(String nome, String email, String usuario,
+    public static String validaCadastro(String nome, String email,
                                         String senha, String conf_senha){
         String mensagem = "";
         boolean podeSalvar = true;
@@ -28,17 +28,14 @@ public class S_Cadastro {
             mensagem += "O e-Mail precisa ser preenchido\n";
             podeSalvar = false;
         }
-        if(usuario == null || usuario.trim().equals("")){
-            mensagem += "O Usuário precisa ser preenchido";
-            podeSalvar = false;
-        }
+
 
 
         return mensagem;
     }
-    public static String validaCadastroConsultor(String nome, String email, String telefone, String idade, String senha, String confSenha) {
+    public static String validaCadastroConsultor(String nome, String email, String idade, String senha, String confSenha) {
         // Verifique se todos os campos são preenchidos
-        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty() || idade.isEmpty() || senha.isEmpty() || confSenha.isEmpty()) {
+        if (nome.isEmpty() || email.isEmpty() || idade.isEmpty() || senha.isEmpty() || confSenha.isEmpty()) {
             return "Todos os campos são obrigatórios";
         }
 
@@ -47,9 +44,6 @@ public class S_Cadastro {
             return "As senhas não coincidem";
         }
 
-        // Aqui você pode adicionar mais lógica de validação conforme necessário
-
-        // Se todas as validações passarem, retorne uma mensagem de sucesso
         return "Cadastro realizado com sucesso!";
     }
 }

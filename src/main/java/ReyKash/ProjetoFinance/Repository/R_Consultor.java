@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface R_Consultor extends JpaRepository<M_Consultor, Long> {
+
     @Query(value = "SELECT * FROM PESSOA WHERE nome = :nome", nativeQuery = true)
     M_Consultor findByNome(@Param("nome") String nome);
+
 }

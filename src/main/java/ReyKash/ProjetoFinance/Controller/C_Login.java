@@ -13,11 +13,11 @@ public class C_Login {
     }
 
     @PostMapping("/")
-    public String getLogin(@RequestParam("user") String usuario,
+    public String getLogin(@RequestParam("email") String email,
                            @RequestParam("senha") String senha){
-        String validUser = "usuario";
+        String validUser = "email";
         String validPassword = "senha";
-        if(usuario.equals(validUser) && senha.equals(validPassword)){
+        if(email.equals(validUser) && senha.equals(validPassword)){
             return "Home/home";
         }else{
             return "Login/login";
