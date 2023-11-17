@@ -22,6 +22,7 @@ public class S_Cliente {
         return r_cliente.listClientes();
     }
 
+
     public static M_Cliente verificaLogin(String email, String senha){
         email = S_Generico.limparNumero(email);
 

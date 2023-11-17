@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class C_Login {
+
     @GetMapping("/login")
     public String landLogin(){
         return "Login/login";

@@ -1,26 +1,37 @@
- function validarFormulario() {
-        var email = document.getElementById("email").value;
-        var senha = document.getElementById("senha").value;
+$("#login").click(enviarLogin);
 
-        if (nome === "" || email === "" || senha === "") {
-            alert("Por favor, preencha todos os campos antes de logar.");
-            return false;
-        }
-        return true;
+$("#email").keyup(function(event){
+    if (event.key === "Enter") {
+        $("#senha").focus();
     }
+});
 
-    document.addEventListener("DOMContentLoaded", function() {
-            let formulario = document.getElementById("seuFormulario");
-            let botaoSubmit = document.getElementById("btnSubmit");
+$("#senha").keyup(function(event){
+    if (event.key === "Enter") {
+        enviarLogin();
+    }
+});
 
-            formulario.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault(); // Evita que o formulário seja enviado normalmente
-                    validarFormulario(); // Chama a função de validação
-                }
-            });
+function enviarLogin(){
+    let email = $("#email").val();
+    let senha = $("#senha").val();
 
-            botaoSubmit.addEventListener("click", function() {
-                validarFormulario();
-            });
-        });
+    $.ajax({
+        type: "POST",
+        url: "/login",
+        data:{
+            email: email,
+            senha: senha
+        },
+        success: function(data){
+            if(data){
+                window.location.href="/Home";
+            }else{
+                alert("Errooouuu!");
+            }
+        },
+        error: function(){
+            alert("Falha ao tentar realizar o login!");
+        }
+    });
+}

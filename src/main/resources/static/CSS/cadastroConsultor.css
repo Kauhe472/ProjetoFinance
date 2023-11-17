@@ -1,5 +1,6 @@
-  body {
-            font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Libre+Baskerville&family=Open+Sans&display=swap');
+        body {
+            font-family: 'Open Sans', sans-serif;
             font-weight: 300;
             font-size: 15px;
             line-height: 1.7;
@@ -31,14 +32,9 @@
             color: #ffeba7;
         }
 
-        p {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
         h4 {
-            font-weight: 600;
+            font-family: 'Chonburi', serif;
+            font-weight: 800;
             color: #FFC970;
         }
 
@@ -58,8 +54,8 @@
             left: -9999px;
         }
 
-        .checkbox:checked + label,
-        .checkbox:not(:checked) + label {
+        .checkbox:checked+label,
+        .checkbox:not(:checked)+label {
             position: relative;
             display: block;
             text-align: center;
@@ -72,8 +68,8 @@
             background-color: #ffeba7;
         }
 
-        .checkbox:checked + label:before,
-        .checkbox:not(:checked) + label:before {
+        .checkbox:checked+label:before,
+        .checkbox:not(:checked)+label:before {
             position: absolute;
             display: block;
             width: 36px;
@@ -81,8 +77,8 @@
             border-radius: 50%;
             color: #ffeba7;
             background-color: #102770;
-            font-family: 'Font Awesome'; /* Substituí 'unicons' por 'Font Awesome' */
-            content: '\f0e0'; /* Ícone de e-mail do Font Awesome */
+            font-family: 'Font Awesome';
+            content: '\f0e0';
             z-index: 20;
             top: -10px;
             left: -10px;
@@ -97,9 +93,9 @@
             width: 440px;
             max-width: 100%;
             height: 400px;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             perspective: 800px;
-            margin-top: 60px;
+            margin-top: -90px;
         }
 
         .card-3d-wrapper {
@@ -108,14 +104,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             transition: all 600ms ease-out;
         }
 
         .card-front,
         .card-back {
             width: 100%;
-            height: 100%;
+            height: 130%;
             background-color: #640000;
             background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
             background-position: bottom center;
@@ -125,11 +121,9 @@
             border-radius: 6px;
             left: 0;
             top: 0;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             backface-visibility: hidden;
         }
-
-
 
         .center-wrap {
             position: absolute;
@@ -145,8 +139,8 @@
         .form-group {
             position: relative;
             display: block;
-            margin: 0;
-            padding: 0;
+            margin-bottom: 15px;
+            /* Adicionado para espaço entre os campos */
         }
 
         .form-style {
@@ -167,8 +161,28 @@
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
         }
 
+        .form-style-idade {
+            padding: 13px 20px;
+            padding-left: 10px;
+            height: 48px;
+            width: 100%;
+            font-weight: 500;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.5px;
+            outline: none;
+            color: #c4c3ca;
+            background-color: #000000;
+            border: none;
+            transition: all 200ms linear;
+            box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+        }
+
         .form-style:focus,
-        .form-style:active {
+        .form-style:active,
+        .form-style-idade:focus,
+        .form-style-idade:active {
             border: none;
             outline: none;
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
@@ -177,14 +191,24 @@
         .input-icon {
             position: absolute;
             top: 0;
-            left: 18px;
+            left: 15px;
             height: 48px;
             font-size: 24px;
             line-height: 48px;
             text-align: left;
             color: #FFC970;
-            transition: all 200ms linear;
         }
+
+        .input-icon.fa-phone-alt {
+        position: absolute;
+        top: 0;
+        left: 25px; /* Ajuste esta propriedade conforme necessário */
+        height: 48px;
+        font-size: 24px;
+        line-height: 48px;
+        text-align: left;
+        color: #FFC970;
+}
 
         .form-group input::placeholder {
             color: #c4c3ca;
@@ -198,6 +222,7 @@
         }
 
         .btn {
+            font-family: 'Open Sans', sans-serif;
             border-radius: 4px;
             height: 44px;
             font-size: 13px;
@@ -229,18 +254,39 @@
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 
-         .logo {
-                   position: absolute;
-                   top: 0px;
-                   right: 0px;
-                   height: 963px;
-                   display: block;
-                   z-index: 90;
-                   transition: all 250ms linear;
-               }
+        .logo {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 963px;
+            display: block;
+            z-index: 90;
+            transition: all 250ms linear;
+        }
 
-               .logo img {
-                   height: 20px;
-                   width: auto;
-                   display: block;
-               }
+        .logo img {
+            height: 20px;
+            width: auto;
+            display: block;
+        }
+
+        /* Adicionado estilo para o select */
+        select {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #c4c3ca;
+            background-color: #000000;
+            border: none;
+            border-radius: 4px;
+            padding: 13px 20px;
+            margin-top: 10px;
+            outline: none;
+            box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+            transition: all 200ms linear;
+        }
+
+        select:focus {
+            box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+        }

@@ -17,6 +17,9 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet" href="../../CSS/cadastroCliente.css">
+    <script src="cadastrarCliente.js" defer></script>
+
+
 
 </head>
 <body>
@@ -31,34 +34,49 @@
                         <div class="card-front">
                             <div class="center-wrap">
                                 <div class="section text-center">
-                                    <h4 class="mb-4 pb-2">Cadastre-se</h4>
+                                    <h4 class="mb-2 pb-2">Cadastre-se</h4>
 
                                     <div  class="form-group mt-2">
                                         <select class="option" id="optionForm">
 
                                             <option  selected disabled><h4>Quem é você?</h4></option>
-                                            <option value="cliente" href="/home">Cliente</option>
+                                            <option value="cliente" href="/cadastro">Cliente</option>
                                             <option value="consultor" href="/cadastroConsultor">Consultor</option>
                                         </select>
                                     </div>
-                                    <div class="form-group mt-2">
-                                        <input type="text" name="nome" class="form-style" placeholder="Your Name"
+                                    <div class="form-group mt-3">
+                                        <input type="text" name="nome" class="form-style" placeholder="Nome"
                                                id="nome" autocomplete="off">
                                         <i class="input-icon fas fa-user"></i>
                                     </div>
-                                    <div class="form-group mt-2">
-                                        <input type="email" name="email" class="form-style" placeholder="Your Email"
+
+                                    <div class="form-group mt-3">
+                                        <input type="email" name="email" class="form-style" placeholder="Email"
                                                id="email" autocomplete="off">
                                         <i class="input-icon fas fa-envelope"></i>
                                     </div>
-                                    <div class="form-group mt-2">
+
+                                    <div class="form-group mt-3">
+                                        <input type="tel" name="cpf" class="form-style" placeholder="CPF"
+                                               id="cpf">
+                                        <i class="input-icon fas fa-phone-alt"></i>
+                                    </div>
+
+                                    <div class="form-group mt-3">
                                         <input type="password" name="senha" class="form-style"
-                                               placeholder="Your Password" id="senha" autocomplete="off">
+                                               placeholder="Senha"
+                                               id="senha" autocomplete="off">
                                         <i class="input-icon fas fa-lock"></i>
                                     </div>
 
+                                    <div class="form-group mt-3">
+                                        <input type="password" name="senha" class="form-style"
+                                               placeholder="Confimar Senha"
+                                               id="confSenha" autocomplete="off">
+                                        <i class="input-icon fas fa-lock"></i>
+                                    </div>
 
-                                    <a href="#" class="btn mt-4" id="submitButton">Submit</a>
+                                    <a  class="btn mt-4" onclick="cadastrarCliente()" ><i class="fas fa-check"></i>Submit</a>
 
                                 </div>
                             </div>
@@ -71,28 +89,24 @@
 </div>
 <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // Identificando o elemento select
-        const selectOption = document.getElementById('optionForm');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Identificando o elemento select
+            const selectOption = document.getElementById('optionForm');
 
-        // Adicionando um ouvinte de evento à mudança no select
-        selectOption.addEventListener('change', function () {
-            // Obtendo o valor selecionado
-            const selectedValue = selectOption.value;
+            // Adicionando um ouvinte de evento à mudança no select
+            selectOption.addEventListener('change', function () {
+                // Obtendo o valor selecionado
+                const selectedValue = selectOption.value;
 
-            // Redirecionando o usuário com base na opção selecionada
-            if (selectedValue === 'cliente') {
-                window.location.href = '/cadastro';
-            } else if (selectedValue === 'consultor') {
-                window.location.href = '/cadastroConsultor';
-            }
+                // Redirecionando o usuário com base na opção selecionada
+                if (selectedValue === 'cliente') {
+                    window.location.href = '/cadastro';
+                } else if (selectedValue === 'consultor') {
+                    window.location.href = '/cadastroConsultor';
+                }
+            });
         });
-    });
 </script>
-
-
-
-<img src="homem.png" alt="" class="logo"></a>
 
 
 </body>

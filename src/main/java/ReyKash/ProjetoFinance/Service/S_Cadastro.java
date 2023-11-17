@@ -12,7 +12,7 @@ public class S_Cadastro {
         this.r_cliente = r_cliente;
     }
 
-    public static String validaCadastro(String nome, String email,
+    public static String validaCadastro(String nome, String email, String cpf, String idade,
                                         String senha, String conf_senha){
         String mensagem = "";
         boolean podeSalvar = true;
