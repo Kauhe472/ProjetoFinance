@@ -23,4 +23,5 @@ public interface R_Cliente extends JpaRepository<M_Cliente, Long> {
     M_Cliente buscarEmailSenha (@Param("email") String email,
                                 @Param("senha") String senha);
 
+
 }

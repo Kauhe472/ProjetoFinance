@@ -9,172 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapiSSs.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Poppins:wght@800&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Chonburi', serif;
-}
-section{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, #640000, #000000);
-    overflow: hidden;
-}
-.circle{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #e51e2a;
-    clip-path: circle(50% at bottom right);
-}
-header{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-header .logo{
-    position: relative;
-    max-width: 150px;
-}
-header .navegation ul{
-    position: relative;
-    display: flex;
-}
-header .navegation  li{
-    list-style: none;
-}
-header .navegation li a{
-    display: inline-block;
-    color: #fff;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 19px;
-    margin-left: 100px;
-}
-.content{
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.content .text{
-    position: relative;
-    max-width: 600px;
-    margin-right: 20px;
-}
-.content .text h2{
-        color: #fff;
-        font-size: 3em;
-        margin-bottom: 10px;
-        line-height: 2.5em;
-        font-weight: 500;
-}
-      .content .text h2 span{
-      font-size: 135px;
-      text-transform: uppercase;
-      background: linear-gradient(45deg, #FF0000, #640000, #ffeba7, #FF0000);
-      background-size: 400% 100%;
-      animation: degrade 15s linear infinite alternate;
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-}
-
-      @keyframes degrade {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 400%;
-            }
-        }
-
-.content .text p{
-    color: #fff;
-}
-
-.navegation .text a{
-
-    display: inline-block;
-    padding: 10px 25px;
-    background: #e51e2a;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 40px;
-    transition: 0.3s ease-in-out;
-}
-
-.navegation li a:hover{
-    transform: translateY(-10px);
-     color: #FFC970;
-     transition: 0.3s ease-in-out;
-}
-.icons{
-    position: absolute;
-    bottom: 40px;
-    left: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.icons li{
-    list-style: none;
-}
-.icons li a{
-    display: inline-block;
-    margin-left: 45px;
-    background: #222;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    transition:  0.3s ease-in-out;
-}
-.icons li a:hover{
-    background: #e51e2a;
-    transform: translateY(-10px);
-}
-.icons li a img{
-    filter: invert(1);
-    transform: scale(0.5);
-}
-
-.boxImg {
-    position: absolute;
-    top: 8%;
-    right: 0;
-}
-
-.boxImg img {
-    left: 40;
-    right: 40;
-}
-
-.boxImg .img1 {
-    width: 780px;
-}
+    <link rel="stylesheet" href="../../CSS/sobrenos.css">
 
 
-    </style>
     <title>Document</title>
 </head>
 <body>
@@ -184,8 +21,8 @@ header .navegation li a{
         <img src="ReyKash.png" alt="" class="logo"></a>
         <nav class="navegation">
             <ul>
-                <li><a href="/inicio">Home</a></li>
-                <li><a href="/about">Um pouco sobre nós</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/sobrenos">Um pouco sobre nós</a></li>
                 <li><div class="text"><a href="/login">Entrar</a></div></li>
             </ul>
         </nav>

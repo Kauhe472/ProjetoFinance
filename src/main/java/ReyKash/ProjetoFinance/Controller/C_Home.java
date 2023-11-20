@@ -11,8 +11,19 @@ public class C_Home {
         return "About/about";
     }
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String HomePage() {
         return "Home/home";
     }
+
+    @GetMapping("/sobrenos")
+    public String getSobrenos(){
+        return "Home/sobrenos";
+    }
+
+    @GetMapping("/ferramentas")
+    public String getFeramentas(){
+        return "Consultor/ferramentas";
+    }
+
 }

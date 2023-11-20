@@ -58,7 +58,7 @@
                                         </div>
 
                                         <div class="form-group mt-2 col-md-5">
-                                            <input type="number" name="idade" class="form-style-idade" placeholder="Idade" id="idade">
+                                            <input type="date" name="idade" class="form-style-idade" placeholder="Idade" id="idade">
                                         </div>
                                     </div>
 
@@ -68,7 +68,14 @@
                                         <i class="input-icon fas fa-lock"></i>
                                     </div>
 
-                                    <a href="#" class="btn mt-4"><i class="fas fa-check"></i>Submit</a>
+                                    <div class="form-group mt-3">
+                                        <input type="password" name="confSenha" class="form-style"
+                                               placeholder="Senha"
+                                               id="confSenha" autocomplete="off">
+                                        <i class="input-icon fas fa-lock"></i>
+                                    </div>
+
+                                    <a class="btn mt-4" onclick="cadastrarConsultor()" ><i class="fas fa-check"></i>CADASTRAR</a>
 
                                 </div>
                             </div>

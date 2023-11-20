@@ -1,64 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <!--JQuery-->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!--Sweet Alert-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css" rel="stylesheet">
-    <!--Custom Scripts-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie.edge">
+    <script src="https://kit.fontawesome.com/d37c5443c6.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="../../CSS/tabelaClientes.css">
 
-    <script src="tabelaClientes.js" defer></script>
-
-    <title>Gerenciamento de Clientes</title>
+    <title>Carteira Virutal</title>
 
 </head>
+
 <body>
-
-<div class="row mt-5">
-
-    <div class="col-6 spacer">
-        <div class="d-flex justify-content-between align-items-center">
-            <span></span>
-            <h1 class="text-center">Clientes</h1>
-            <span></span>
+<div class="container centered">
+    <header class="perfil">
+        <div class="perfil-image">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </div>
         </div>
-        <hr>
-        <section id="clientes">
-            <table class="table table-striped text-center">
-                <thead id="cabListaClientes">
-                <tr>
-                    <th>Nome</th>
-                    <th>e-Mail</th>
-                    <th>Perfil</th>
-                    <th>Opçoes</th>
-                </tr>
-                </thead>
-                <tbody id="listaClientes">
-                <tr th:each="M_Cliente : ${clientes}">
-                    <td th:text="${M_Cliente.nome}"></td>
-                    <td th:text="${M_Cliente.email}"></td>
-                    <td th:text="${M_Cliente.perfilInvestidor}"></td>
-                    <td><a class="btn btn-sm btn-warning me-1" th:href="${'/clientes/CarteiraInvestimentos/'+ M_Cliente.id_cliente}">Ver Grafico</a><a class="btn btn-sm btn-danger" th:href="${'/edit/'+ M_Cliente.id_cliente}">|</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="title">
+            <h1>nome do usuário</h1>
+        </div>
+    </header>
+
+    <main class="projetos client-card">
+        <!-- Conteúdo do cliente ou tabela aqui -->
+    </main>
+
+    <div class="button-container">
+        <button id="perfilButton">Visualizar perfil</button>
+        <div class="floating-balloon" id="profileBalloon">
+            <!-- Conteúdo do perfil aqui -->
+            <p>🔢Telefone: </p>
+            <p>💰Email: </p>
+            <p>🃏Nome:</p>
+            <p>🃏Data de nacimento:</p>
+        </div>
+        <button id="resumoButton">Ver resumo</button>
+        <div class="button-container">
+            <a class="nav-link active" aria-current="page" href="/tabelaClientes/carteiraInvestimentos"> Carteira de Investimentos</a>
+        </div>
     </div>
 </div>
 
+<div class="perfil-image">
+    <img src="homemuie.png" alt="" style="position: relative;opacity: 0.7;width: 100%;height: 100%;z-index: -1;">
+</div>
+<script>
+    const perfilButton = document.getElementById("perfilButton");
+    const profileBalloon = document.getElementById("profileBalloon");
+
+    perfilButton.addEventListener("click", () => {
+        if (profileBalloon.style.display === "block") {
+            profileBalloon.style.display = "none";
+        } else {
+            profileBalloon.style.display = "block";
+        }
+    });
+</script>
 </body>
+
 </html>

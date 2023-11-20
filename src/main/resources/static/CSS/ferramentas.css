@@ -1,0 +1,118 @@
+  body {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     min-height: 100vh;
+     margin: 0;
+     background-image: url('mc.jpg');
+ }
+
+   .navigation {
+    width: 100%;
+    padding: 6px 0; /* Ajustei o padding */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #000000; /* Cor da barra preta */
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation a.btn {
+    text-decoration: none;
+    color: #FFFFFF; /* Cor do texto */
+    margin: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Adicionei uma classe para o botão Home */
+.navigation #confirmHomeButton {
+    margin-left: auto; /* Isso coloca o botão Home no canto direito */
+}
+
+        .navigation a.btn:hover {
+            text-decoration: none;
+            color: #92A4C8;
+            border-bottom: 2px solid #92A4C8;
+        }
+
+.navigation a.btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #92A4C8;
+    border-radius: 8px 8px 0 0; /* Borda superior arredondada */
+    transform-origin: center top;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.navigation a.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.square {
+    width: 250px;
+    height: 400px;
+    background: linear-gradient(45deg, #182744, #000000);
+    margin: 20px 10px; /* Ajusta a margem */
+    border-radius: 15px;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Deixa o texto mais negrito */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 4); /* Sombreado mais escuro */
+    position: relative;
+    font-family: 'Baskerville', serif; /* Corrige o nome da fonte */
+}
+
+.square:hover {
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 4); /* Aumenta o sombreado no hover */
+}
+
+
+ .title {
+     font-size: 28px; /* Increased font size */
+     margin-bottom: 20px;
+ }
+
+ .icon {
+     width: 100px;
+     height: 80px;
+ }
+
+ .square:not(:last-child) {
+     margin-right: 20px; /* Adjusted margin */
+ }
+
+ .square-container {
+     margin-top: 150px; /* Adjusted margin-top */
+     display: flex;
+     justify-content: center;
+ }
+        .confirmation-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-card button {
+            margin: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }

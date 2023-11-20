@@ -12,7 +12,6 @@ public class M_Cliente {
     private String email;
     private String cpf;
     private String idade;
-
     private String senha;
 
     public Long getId_cliente() {

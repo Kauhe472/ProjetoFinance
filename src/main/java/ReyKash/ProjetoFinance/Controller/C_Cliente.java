@@ -1,7 +1,9 @@
 package ReyKash.ProjetoFinance.Controller;
 
+import ReyKash.ProjetoFinance.Model.M_Resposta;
 import ReyKash.ProjetoFinance.Service.S_Cadastro;
 import ReyKash.ProjetoFinance.Service.S_Cliente;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +16,25 @@ public class C_Cliente {
 
 
     @GetMapping("/cadastro")
-    public String getCadastro(){
-        return "Cadastro/cadastro";
+    public String getCadastro(HttpServletRequest request){
+        if(request.getHeader("Referer") != null){
+            return "Cadastro/cadastro";
+        }else{
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/cadastro")
-    public String postCadastro(@RequestParam("nome") String nome,
-                               @RequestParam("email") String email,
-                               @RequestParam("cpf") String cpf,
-                               @RequestParam("idade") String idade,
-                               @RequestParam("senha") String senha,
-                               @RequestParam("confsenha") String conf_senha) {
-        String mensagem = S_Cadastro.validaCadastro(nome, email, cpf, idade, senha, conf_senha);
-        return "redirect:Home/home";
+    @ResponseBody
+    public M_Resposta postCadastro(@RequestParam("nome") String nome,
+                                   @RequestParam("email") String email,
+                                   @RequestParam("cpf") String cpf,
+                                   @RequestParam("idade") String idade,
+                                   @RequestParam("senha") String senha,
+                                   @RequestParam("confSenha") String confSenha) {
+        return S_Cliente.cadastrarCliente(nome, email, cpf, idade, senha, confSenha);
     }
+
 
     @PostMapping("/login")
     @ResponseBody

@@ -3,24 +3,25 @@ package ReyKash.ProjetoFinance.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "consultor")
+@Table(name = "consultores")
 public class M_Consultor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_consultor;
     private String nome;
     private String email;
     private String cpf;
-    private int idade;
+    private String idade;
     private String senha;
 
-    public Long getId() {
-        return id;
+
+    public Long getId_consultor() {
+        return id_consultor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_consultor(Long id_consultor) {
+        this.id_consultor = id_consultor;
     }
 
     public String getNome() {
@@ -39,11 +40,19 @@ public class M_Consultor {
         this.email = email;
     }
 
-    public int getIdade() {
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
 

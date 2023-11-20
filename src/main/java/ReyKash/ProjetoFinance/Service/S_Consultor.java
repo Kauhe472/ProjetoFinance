@@ -1,8 +1,10 @@
 package ReyKash.ProjetoFinance.Service;
 
 import ReyKash.ProjetoFinance.Model.M_Cliente;
+import ReyKash.ProjetoFinance.Model.M_Consultor;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
 import ReyKash.ProjetoFinance.Repository.R_Cliente;
+import ReyKash.ProjetoFinance.Repository.R_Consultor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -10,21 +12,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class S_Cliente {
+public class S_Consultor {
 
     @Autowired
-    private static R_Cliente r_cliente;
+    private static R_Consultor r_consultor;
 
-    public S_Cliente(R_Cliente r_cliente) {
-        this.r_cliente = r_cliente;
+    public S_Consultor(R_Consultor r_consultor) {
+        this.r_consultor = r_consultor;
     }
 
-    public static List<M_Cliente> listarClientes() {
-        return r_cliente.listClientes();
+    public static List<M_Consultor> listarClientes() {
+        return r_consultor.listConsultores();
     }
 
 
-    public static M_Cliente verificaLogin(String email, String senha){
+    public static M_Consultor verificaLogin(String email, String senha){
         email = S_Generico.limparNumero(email);
 
         if(S_Generico.textoEstaVazio(email)){
@@ -32,10 +34,10 @@ public class S_Cliente {
         }else if(S_Generico.textoEstaVazio(senha)){
             return null;
         }
-        return r_cliente.buscarEmailSenha(email, senha);
+        return r_consultor.buscarEmailSenha(email, senha);
     }
 
-    public static M_Resposta cadastrarCliente(String nome, String email, String cpf,
+    public static M_Resposta cadastrarConsultor(String nome, String email, String cpf,
                                               String idade, String senha, String confSenha){
         boolean podeSalvar = true;
         String mensagem = "";
@@ -65,15 +67,15 @@ public class S_Cliente {
         }
 
         if(podeSalvar){
-            M_Cliente m_cliente = new M_Cliente();
-            m_cliente.setNome(nome);
-            m_cliente.setEmail(email);
-            m_cliente.setCpf(cpf);
-            m_cliente.setIdade(idade);
-            m_cliente.setSenha(senha);
+            M_Consultor m_consultor = new M_Consultor();
+            m_consultor.setNome(nome);
+            m_consultor.setEmail(email);
+            m_consultor.setCpf(cpf);
+            m_consultor.setIdade(idade);
+            m_consultor.setSenha(senha);
 
             try {
-                r_cliente.save(m_cliente);
+                r_consultor.save(m_consultor);
                 mensagem += "Cadastro realizado com sucesso!";
             }catch (DataIntegrityViolationException e){
                 podeSalvar = false;
