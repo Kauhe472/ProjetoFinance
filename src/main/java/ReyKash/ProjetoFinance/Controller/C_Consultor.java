@@ -27,7 +27,7 @@ public class C_Consultor {
                                             @RequestParam("idade") String idade,
                                             @RequestParam("senha") String senha,
                                             @RequestParam("confSenha") String confSenha) {
-        return S_Cliente.cadastrarCliente(nome, email, cpf, idade, senha, confSenha);
+        return S_Cliente.salvarCadastro(nome, email, cpf, idade, senha, confSenha);
     }
 
     @GetMapping("/TabelaClientes")

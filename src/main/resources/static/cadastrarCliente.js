@@ -13,26 +13,59 @@ function cadastrarCliente(){
 	let cpf = $("#cpf").val();
 	let idade = $("#idade").val();
 	let senha = $("#senha").val();
-    let confSenha = $("#confSenha").val();
+	let confSenha = $("#confSenha").val();
 
-	$.ajax({
-		type: "POST",
-		url: "/cadastro",
-		data:{
-			nome:nome,
-			email:email,
-			cpf:cpf,
-			idade:idade,
-			senha:senha,
-			confSenha:confSenha,
-		},
-		success: function(data){
-			alertaSucesso(data);
-            },
-        error: function(){
-			alert("Não ok");
+    if(campoVazio(nome)){
+    		podeEnviar = false;
+    		$(".nome").addClass("error-field");
+    		showToast({sucesso:false,mensagem:"O nome precisa ser preenchido!"});
+    	}
+    	if(campoVazio(email)){
+            		podeEnviar = false;
+            		$(".email").addClass("error-field");
+            		showToast({sucesso:false,mensagem:"É necessário informar um email ou telefone!"});
+            	}
+    	if(!validarCPF(cpf)){
+            podeEnviar = false;
+            $(".cpf").addClass("error-field");
+            showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
         }
-	});
+        if(!validarCPF(idade)){
+                    podeEnviar = false;
+                    $(".idade").addClass("error-field");
+                    showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
+                }
+    	if(campoVazio(senha)){
+    		podeEnviar = false;
+    		$(".senha").addClass("error-field");
+    		showToast({sucesso:false,mensagem:"É necessário informar uma senha!"});
+    	}else if(senha != confSenha){
+    		podeEnviar = false;
+    		$(".senha").addClass("error-field");
+    		showToast({sucesso:false,mensagem:"A Senha e a confirmação de senha não conferem!"});
+    	}
+
+
+	if(podeEnviar){
+            $.ajax({
+                type: "POST",
+                url: "/cadastro",
+                data: {
+                    nome: nome,
+                    email: email,
+                    telefone: telefone,
+                    cpf_cnpj: cpf_cnpj,
+                    senha: senha,
+                    confSenha: confSenha,
+                },
+                success: function(data){
+                    showToast(data);
+                },
+                error: function(){
+                    showToast({sucesso: false, mensagem: "Erro ao enviar o cadastro!"});
+                }
+            })
+        }
 }
 
 

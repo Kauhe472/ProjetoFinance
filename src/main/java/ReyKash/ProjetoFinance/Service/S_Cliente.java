@@ -19,6 +19,7 @@ public class S_Cliente {
         this.r_cliente = r_cliente;
     }
 
+
     public static List<M_Cliente> listarClientes() {
         return r_cliente.listClientes();
     }
@@ -35,7 +36,7 @@ public class S_Cliente {
         return r_cliente.buscarEmailSenha(email, senha);
     }
 
-    public static M_Resposta cadastrarCliente(String nome, String email, String cpf,
+    public static M_Resposta salvarCadastro(String nome, String email, String cpf,
                                               String idade, String senha, String confSenha){
         boolean podeSalvar = true;
         String mensagem = "";

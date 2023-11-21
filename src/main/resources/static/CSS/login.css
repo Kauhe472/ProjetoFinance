@@ -1,18 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Libre+Baskerville&family=Open+Sans&display=swap');
 
         body {
-         font-family: 'Poppins', sans-serif;
-         font-weight: 300;
-         font-size: 15px;
-         line-height: 1.7;
-         color: #c4c3ca;
-         background: linear-gradient(to bottom, #000000,  #640000);
-         overflow-x: hidden;
-         margin: 0;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         height: 100vh;
-     }
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #c4c3ca;
+            overflow-x: hidden;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('fundo.png');
+        }
 
         a {
             cursor: pointer;
@@ -29,7 +30,7 @@
         }
 
         .link:hover {
-            color: #ffeba7;
+            color: #9ABCFF;
         }
 
         p {
@@ -39,8 +40,9 @@
         }
 
         h4 {
+            font-family: 'Chonburi', serif;
             font-weight: 600;
-            color: #FFC970;
+            color: #FFF;
         }
 
         .section {
@@ -82,8 +84,8 @@
             border-radius: 50%;
             color: #ffeba7;
             background-color: #102770;
-            font-family: 'Font Awesome'; /* Substituí 'unicons' por 'Font Awesome' */
-            content: '\f0e0'; /* Ícone de e-mail do Font Awesome */
+            font-family: 'Font Awesome';
+            content: '\f0e0';
             z-index: 20;
             top: -10px;
             left: -10px;
@@ -98,7 +100,7 @@
             width: 440px;
             max-width: 100%;
             height: 400px;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             perspective: 800px;
             margin-top: 60px;
         }
@@ -109,7 +111,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             transition: all 600ms ease-out;
         }
 
@@ -117,20 +119,32 @@
         .card-back {
             width: 100%;
             height: 100%;
-            background-color: #640000;
-            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-            background-position: bottom center;
-            background-repeat: no-repeat;
-            background-size: 300%;
             position: absolute;
             border-radius: 6px;
             left: 0;
             top: 0;
-            transform-style: preserve-3d; /* Removi o prefixo -webkit- */
+            transform-style: preserve-3d;
             backface-visibility: hidden;
         }
 
+        .card-front {
+            background: linear-gradient(45deg, #000000, #094688);
+        }
 
+        .card-front:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: 300%;
+            border-radius: 6px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
         .center-wrap {
             position: absolute;
@@ -161,8 +175,8 @@
             line-height: 22px;
             letter-spacing: 0.5px;
             outline: none;
-            color: #c4c3ca;
-            background-color: #000000;
+            color: #fff;
+            background-color: #094688;
             border: none;
             transition: all 200ms linear;
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
@@ -183,8 +197,7 @@
             font-size: 24px;
             line-height: 48px;
             text-align: left;
-            color: #FFC970;
-            transition: all 200ms linear;
+            color: #FFF;
         }
 
         .form-group input::placeholder {
@@ -212,21 +225,21 @@
             justify-content: center;
             text-align: center;
             border: none;
-            background-color: #FFC970;
-            color: #000000;
+            background-color:  #094688;
+            color: #fff;
             box-shadow: 0 8px 24px 0 rgba(168, 140, 255, 0.2);
         }
 
         .btn:active,
         .btn:focus {
             background-color: #B78FFC;
-            color: #FFC970;
+            color: #9ABCFF;
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 
         .btn:hover {
-            background-color: #000000;
-            color: #FFC970;
+            background-color: #9ABCFF;
+            color: #fff;
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 

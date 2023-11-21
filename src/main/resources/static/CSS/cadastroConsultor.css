@@ -4,14 +4,14 @@
             font-weight: 300;
             font-size: 15px;
             line-height: 1.7;
-            color: #c4c3ca;
-            background: linear-gradient(to bottom, #640000, #000000);
+            color: #fff;
             overflow-x: hidden;
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-image: url('fundo.png');
         }
 
         a {
@@ -35,7 +35,7 @@
         h4 {
             font-family: 'Chonburi', serif;
             font-weight: 800;
-            color: #FFC970;
+            color: #FFf;
         }
 
         .section {
@@ -95,34 +95,52 @@
             height: 400px;
             transform-style: preserve-3d;
             perspective: 800px;
-            margin-top: -90px;
+            margin-top: 60px;
         }
 
         .card-3d-wrapper {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
+            width: 440px;
+            max-width: 100%;
+            height: 400px;
             transform-style: preserve-3d;
-            transition: all 600ms ease-out;
+            perspective: 800px;
+            margin-top: -90px;
         }
 
         .card-front,
         .card-back {
-            width: 100%;
-            height: 130%;
-            background-color: #640000;
+           content: "";
+            position: absolute;
+            width: 120%;
+            height: 140%;
             background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
             background-position: bottom center;
             background-repeat: no-repeat;
             background-size: 300%;
-            position: absolute;
             border-radius: 6px;
-            left: 0;
             top: 0;
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
+            left: 0;
+            z-index: -1;
+        }
+
+         .card-front {
+            background: linear-gradient(45deg, #000000, #094688);
+        }
+
+         .card-front:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: 300%;
+            border-radius: 6px;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
         .center-wrap {
@@ -136,12 +154,7 @@
             display: block;
         }
 
-        .form-group {
-            position: relative;
-            display: block;
-            margin-bottom: 15px;
-            /* Adicionado para espaço entre os campos */
-        }
+
 
         .form-style {
             padding: 13px 20px;
@@ -154,8 +167,8 @@
             line-height: 22px;
             letter-spacing: 0.5px;
             outline: none;
-            color: #c4c3ca;
-            background-color: #000000;
+            color: #fff;
+            background-color: #094688;
             border: none;
             transition: all 200ms linear;
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
@@ -172,8 +185,8 @@
             line-height: 22px;
             letter-spacing: 0.5px;
             outline: none;
-            color: #c4c3ca;
-            background-color: #000000;
+            color: #fff;
+            background-color: #094688;
             border: none;
             transition: all 200ms linear;
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
@@ -191,27 +204,28 @@
         .input-icon {
             position: absolute;
             top: 0;
-            left: 15px;
+            left: 18px;
             height: 48px;
             font-size: 24px;
             line-height: 48px;
             text-align: left;
-            color: #FFC970;
+            color: #fff;
+            transition: all 200ms linear;
         }
 
-        .input-icon.fa-phone-alt {
-        position: absolute;
-        top: 0;
-        left: 25px; /* Ajuste esta propriedade conforme necessário */
-        height: 48px;
-        font-size: 24px;
-        line-height: 48px;
-        text-align: left;
-        color: #FFC970;
-}
+            .input-icon.fa-id-card {
+            position: absolute;
+            top: 0;
+            left: 25px; /* Ajuste conforme necessário */
+            height: 48px;
+            font-size: 24px;
+            line-height: 48px;
+            text-align: left;
+            color: #FFF;
+        }
 
         .form-group input::placeholder {
-            color: #c4c3ca;
+            color: #fff;
             opacity: 0.7;
             transition: all 200ms linear;
         }
@@ -221,8 +235,14 @@
             transition: all 200ms linear;
         }
 
+        .form-group {
+            position: relative;
+            display: block;
+            margin-bottom: 15px;
+            /* Adicionado para espaço entre os campos */
+        }
+
         .btn {
-            font-family: 'Open Sans', sans-serif;
             border-radius: 4px;
             height: 44px;
             font-size: 13px;
@@ -236,21 +256,22 @@
             justify-content: center;
             text-align: center;
             border: none;
-            background-color: #FFC970;
-            color: #000000;
+            background-color: #094688;
+            color: #FFF;
             box-shadow: 0 8px 24px 0 rgba(168, 140, 255, 0.2);
+            margin-top: 10px; /* Adicionado para criar espaço entre o select e o botão */
         }
 
         .btn:active,
         .btn:focus {
-            background-color: #B78FFC;
-            color: #FFC970;
+            background-color: #094688;
+            color: #FFF;
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 
         .btn:hover {
-            background-color: #000000;
-            color: #FFC970;
+            background-color: #9abcff;
+            color: #FFF;
             box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
         }
 
@@ -261,7 +282,7 @@
             height: 963px;
             display: block;
             z-index: 90;
-            transition: all 250ms linear;
+
         }
 
         .logo img {
@@ -270,7 +291,8 @@
             display: block;
         }
 
-        /* Adicionado estilo para o select */
+
+
         select {
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
@@ -290,3 +312,24 @@
         select:focus {
             box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
         }
+
+
+.option {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #c4c3ca;
+    background: linear-gradient(45deg, #000000, #094688);
+    border: none;
+    border-radius: 4px;
+    padding: 13px 20px;
+    margin-top: 10px;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+    transition: all 200ms linear;
+}
+
+.option:focus {
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+}
