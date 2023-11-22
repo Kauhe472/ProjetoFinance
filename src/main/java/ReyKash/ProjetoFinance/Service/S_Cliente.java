@@ -6,7 +6,11 @@ import ReyKash.ProjetoFinance.Repository.R_Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.tags.EditorAwareTag;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -37,50 +41,70 @@ public class S_Cliente {
     }
 
     public static M_Resposta salvarCadastro(String nome, String email, String cpf,
-                                              String idade, String senha, String confSenha){
-        boolean podeSalvar = true;
+                                              String data_nasc, String senha, String confSenha){
+        boolean cadastroValido = true;
         String mensagem = "";
 
         if(S_Generico.textoEstaVazio(nome)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "O nome precisa ser preenchido!";
         }
         if(!S_Generico.validarEmail(email)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "e-Mail é inválido!";
         }
         if(!S_CPF.validarCPF(cpf)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "O CPF informado é inválido!";
         }
-        if(S_Generico.textoEstaVazio(S_Generico.limparNumero(idade))){
-            podeSalvar = false;
-            mensagem += "A idade deve ser selecionada!";
+
+        if(S_Generico.textoEstaVazio(data_nasc)){
+            cadastroValido = false;
+            mensagem += "A data de nascimento não pode estar vazia!";
+        } else {
+            // Validar a idade com base na data de nascimento
+            try {
+                LocalDate dataNascimentoDate = LocalDate.parse(data_nasc);
+                LocalDate dataAtual = LocalDate.now();
+                long idade = ChronoUnit.YEARS.between(dataNascimentoDate, dataAtual);
+
+                if (idade <= 0 || idade > 150) {
+                    cadastroValido = false;
+                    mensagem += "A idade deve estar entre 1 e 150 anos!";
+                }
+            } catch (DateTimeParseException e) {
+                cadastroValido = false;
+                mensagem += "A data de nascimento é inválida!";
+            }
         }
 
         if(senha == null || senha.equals("")){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "É necessário informar uma senha!";
         }else if(!senha.equals(confSenha)){
             mensagem += "A senha e a confirmação de senha precisam ser iguais!";
         }
 
-        if(podeSalvar){
+        if(cadastroValido){
             M_Cliente m_cliente = new M_Cliente();
             m_cliente.setNome(nome);
             m_cliente.setEmail(email);
-            m_cliente.setCpf(cpf);
-            m_cliente.setIdade(idade);
+            m_cliente.setCpf(Long.parseLong(S_CPF.limparNumero(cpf)));
+            m_cliente.setData_nasc(LocalDate.parse(data_nasc));
             m_cliente.setSenha(senha);
 
             try {
                 r_cliente.save(m_cliente);
                 mensagem += "Cadastro realizado com sucesso!";
             }catch (DataIntegrityViolationException e){
-                podeSalvar = false;
-                mensagem += "Falha ao incluir registro no banco de dados.";
+                if(e.getMessage().contains("u_cpf")){
+                    mensagem += "O CPF informado já foi cadastrado!";
+                }else{
+                    mensagem += "Erro ao cadastrar";
+                }
+                cadastroValido = false;
             }
         }
-        return new M_Resposta(podeSalvar, mensagem);
+        return new M_Resposta(cadastroValido, mensagem);
     }
 }

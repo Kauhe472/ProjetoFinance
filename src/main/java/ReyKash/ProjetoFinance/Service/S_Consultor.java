@@ -37,30 +37,30 @@ public class S_Consultor {
         return r_consultor.buscarEmailSenha(email, senha);
     }
 
-    public static M_Resposta cadastrarConsultor(String nome, String email, String cpf,
-                                              String idade, String senha, String confSenha){
-        boolean podeSalvar = true;
+    public static M_Resposta salvarCadastro(String nome, String email, String cpf,
+                                              String data_nasc, String senha, String confSenha){
+        boolean cadastroValido = true;
         String mensagem = "";
 
         if(S_Generico.textoEstaVazio(nome)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "O nome precisa ser preenchido!";
         }
         if(!S_Generico.validarEmail(email)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "e-Mail é inválido!";
         }
         if(!S_CPF.validarCPF(cpf)){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "O CPF informado é inválido!";
         }
         if(S_Generico.textoEstaVazio(S_Generico.limparNumero(idade))){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "A idade deve ser selecionada!";
         }
 
         if(senha == null || senha.equals("")){
-            podeSalvar = false;
+            cadastroValido = false;
             mensagem += "É necessário informar uma senha!";
         }else if(!senha.equals(confSenha)){
             mensagem += "A senha e a confirmação de senha precisam ser iguais!";

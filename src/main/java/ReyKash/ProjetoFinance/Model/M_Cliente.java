@@ -2,6 +2,9 @@ package ReyKash.ProjetoFinance.Model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name="clientes")
 public class M_Cliente {
@@ -10,8 +13,8 @@ public class M_Cliente {
     private Long id_cliente;
     private String nome;
     private String email;
-    private String cpf;
-    private String idade;
+    private Long cpf;
+    private LocalDate data_nasc;
     private String senha;
 
     public Long getId_cliente() {
@@ -38,20 +41,20 @@ public class M_Cliente {
         this.email = email;
     }
 
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
-    public String getIdade() {
-        return idade;
+    public LocalDate getData_nasc() {
+        return data_nasc;
     }
 
-    public void setIdade(String idade) {
-        this.idade = idade;
+    public void setData_nasc(LocalDate data_nasc) {
+        this.data_nasc = data_nasc;
     }
 
     public String getSenha() {

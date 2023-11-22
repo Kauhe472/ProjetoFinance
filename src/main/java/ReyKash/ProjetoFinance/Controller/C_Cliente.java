@@ -8,11 +8,14 @@
     import jakarta.servlet.http.HttpServletRequest;
     import jakarta.servlet.http.HttpSession;
     import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.format.annotation.DateTimeFormat;
     import org.springframework.stereotype.Controller;
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.PostMapping;
     import org.springframework.web.bind.annotation.RequestParam;
     import org.springframework.web.bind.annotation.ResponseBody;
+
+    import java.time.LocalDate;
 
     @Controller
     public class C_Cliente {
@@ -27,10 +30,10 @@
         public M_Resposta postCadastro(@RequestParam("nome") String nome,
                                        @RequestParam("email") String email,
                                        @RequestParam("cpf") String cpf,
-                                       @RequestParam("idade") String idade,
+                                       @RequestParam("data_nasc") String data_nasc,
                                        @RequestParam("senha") String senha,
                                        @RequestParam("confSenha") String confSenha) {
-            return S_Cliente.salvarCadastro(nome, email, cpf, idade, senha, confSenha);
+            return S_Cliente.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
         }
 
 

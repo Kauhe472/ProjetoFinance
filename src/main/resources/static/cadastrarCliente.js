@@ -6,12 +6,12 @@
     });
 
 function cadastrarCliente(){
-    let podeEnviar = true
+    let cadastroValido = true
 
 	let nome = $("#nome").val();
 	let email = $("#email").val();
 	let cpf = $("#cpf").val();
-	let idade = $("#idade").val();
+	let data_nasc = $("#data_nasc").val();
 	let senha = $("#senha").val();
 	let confSenha = $("#confSenha").val();
 
@@ -23,17 +23,17 @@ function cadastrarCliente(){
     	if(campoVazio(email)){
             		podeEnviar = false;
             		$(".email").addClass("error-field");
-            		showToast({sucesso:false,mensagem:"É necessário informar um email ou telefone!"});
+            		showToast({sucesso:false,mensagem:"É necessário informar um email!"});
             	}
     	if(!validarCPF(cpf)){
             podeEnviar = false;
             $(".cpf").addClass("error-field");
             showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
         }
-        if(!validarCPF(idade)){
+        if(campoVazio(data_nasc)){
                     podeEnviar = false;
-                    $(".idade").addClass("error-field");
-                    showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
+                    $(".data_nasc").addClass("error-field");
+                    showToast({sucesso:false,mensagem:"A idade é invalida!"});
                 }
     	if(campoVazio(senha)){
     		podeEnviar = false;
@@ -46,15 +46,15 @@ function cadastrarCliente(){
     	}
 
 
-	if(podeEnviar){
+	if(cadastroValido){
             $.ajax({
                 type: "POST",
                 url: "/cadastro",
                 data: {
                     nome: nome,
                     email: email,
-                    telefone: telefone,
-                    cpf_cnpj: cpf_cnpj,
+                    cpf: cpf,
+                    data_nasc: data_nasc,
                     senha: senha,
                     confSenha: confSenha,
                 },
