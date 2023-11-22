@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="../../CSS/cadastroConsultor.css">
+    <script src="cadastrarConsultor.js" defer></script>
+    <script src="default.js" defer></script>
 
 </head>
 <body>
@@ -58,7 +61,7 @@
                                         </div>
 
                                         <div class="form-group mt-2 col-md-5">
-                                            <input type="date" name="idade" class="form-style-idade" placeholder="Idade" id="idade">
+                                            <input type="date" name="data_nasc" class="form-style-idade" placeholder="Data de Nascimento" id="data_nasc">
                                         </div>
                                     </div>
 
@@ -75,7 +78,7 @@
                                         <i class="input-icon fas fa-lock"></i>
                                     </div>
 
-                                    <a class="btn mt-4" onclick="cadastrarConsultor()" ><i class="fas fa-check"></i>CADASTRAR</a>
+                                    <a class="btn mt-4" id="btn" onclick="cadastrarConsultor()">CADASTRAR</a>
 
                                 </div>
                             </div>

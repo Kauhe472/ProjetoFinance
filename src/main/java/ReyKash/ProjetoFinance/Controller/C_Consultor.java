@@ -24,11 +24,12 @@ public class C_Consultor {
     public M_Resposta postCadastroConsultor(@RequestParam("nome") String nome,
                                             @RequestParam("email") String email,
                                             @RequestParam("cpf") String cpf,
-                                            @RequestParam("idade") String idade,
+                                            @RequestParam("data_nasc") String data_nasc,
                                             @RequestParam("senha") String senha,
                                             @RequestParam("confSenha") String confSenha) {
-        return S_Cliente.salvarCadastro(nome, email, cpf, idade, senha, confSenha);
+        return S_Cliente.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
     }
+
 
     @GetMapping("/TabelaClientes")
     public String getTabelaClientes(Model model) {
