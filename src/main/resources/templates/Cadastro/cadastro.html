@@ -23,9 +23,7 @@
     <link rel="stylesheet" href="../../CSS/cadastroCliente.css">
     <script src="cadastrarCliente.js" defer></script>
     <script src="default.js" defer></script>
-
-
-
+    x
 
 </head>
 <body>
@@ -89,6 +87,28 @@
                                     </div>
 
 
+                                    <div class="form-group mt-2">
+                                        <label>Já possui um consultor cadastrado em nossa plataforma?</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="possuiConsultor" id="simConsultor" value="sim">
+                                            <label class="form-check-label" for="simConsultor">Sim</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="possuiConsultor" id="naoConsultor" value="nao" checked>
+                                            <label class="form-check-label" for="naoConsultor">Não</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Formulário adicional se a resposta for 'Sim' -->
+                                    <div id="consultorForm" style="display: none;">
+                                        <div class="form-group mt-2">
+                                            <label for="nomeConsultor">Nome do Consultor:</label>
+                                            <input type="text" class="form-style" id="nomeConsultor" name="nomeConsultor" placeholder="Digite o nome do consultor">
+                                            <i class="input-icon fas fa-user-check"></i>
+                                        </div>
+                                    </div>
+
+
                                     <a class="btn mt-4" id="btn" onclick="cadastrarCliente()">CADASTRAR</a>
 
                                 </div>
@@ -119,8 +139,13 @@
                 }
             });
         });
+
+        document.querySelectorAll('input[name="possuiConsultor"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+            // Mostrando ou escondendo o formulário adicional com base na opção selecionada
+            document.getElementById('consultorForm').style.display = this.value === 'sim' ? 'block' : 'none';
+        });
+    });
 </script>
-
-
 </body>
 </html>

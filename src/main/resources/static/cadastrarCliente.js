@@ -69,9 +69,6 @@ function cadastrarCliente(){
 }
 
 
-
-
-
  function validarCPF() {
             var cpf = document.getElementById("cpf").value.replace(/[^\d]+/g,'');
 

@@ -3,6 +3,7 @@ package ReyKash.ProjetoFinance.Controller;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
 import ReyKash.ProjetoFinance.Service.S_Cadastro;
 import ReyKash.ProjetoFinance.Service.S_Cliente;
+import ReyKash.ProjetoFinance.Service.S_Consultor;
 import ReyKash.ProjetoFinance.Service.S_Investimentos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class C_Consultor {
                                             @RequestParam("data_nasc") String data_nasc,
                                             @RequestParam("senha") String senha,
                                             @RequestParam("confSenha") String confSenha) {
-        return S_Cliente.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
+        return S_Consultor.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
     }
 
 

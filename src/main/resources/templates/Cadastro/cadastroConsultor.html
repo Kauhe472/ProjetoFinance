@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Adicione o CSS do Bootstrap -->
@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="../../CSS/cadastroConsultor.css">
     <script src="cadastrarConsultor.js" defer></script>
@@ -56,12 +59,16 @@
 
                                     <div class="row">
                                         <div class="form-group mt-2 col-md-7" style="display: flex;">
-                                            <input type="tel" name="cpf" class="form-style" placeholder="CPF" id="cpf">
-                                            <i class="input-icon fas fa-phone-alt"></i>
+                                            <input type="text" name="cpf" class="form-style" placeholder="CPF"
+                                                   id="cpf">
+                                            <i class="input-icon fas fa-user"></i>
                                         </div>
 
                                         <div class="form-group mt-2 col-md-5">
-                                            <input type="date" name="data_nasc" class="form-style-idade" placeholder="Data de Nascimento" id="data_nasc">
+                                            <input type="date" name="data_nasc" class="form-style-idade" placeholder="Data de Nascimento"
+                                                   id="data_nasc">
+                                            <i class="input-icon fas fa-user"></i>
+
                                         </div>
                                     </div>
 
