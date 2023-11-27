@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros</title>
+    <style>
+        body {
+           font-family: 'Arial', sans-serif;
+           margin: 0;
+           padding: 0;
+           background-image: url('novo.jpg');
+           background-size: cover;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+       }
+
+      #container {
+    max-width: 400px;
+    margin: 10px; /* Ajuste a margem para diminuir o espaço externo */
+    padding: 20px; /* Ajuste o preenchimento para diminuir o espaço interno */
+    border: 5px solid;
+    border-radius: 20px;
+    border-image: linear-gradient(30deg, #4C86C4, #094688, #e6b86b) 1;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: border-image 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+       #container:hover {
+           border-image: linear-gradient(30deg, #e6b86b, #094688, #4C86C4) 1;
+       }
+
+       label {
+           display: block;
+           font-weight: bold;
+           margin-bottom: 10px;
+       }
+
+       input[type="number"] {
+           width: calc(100% - 20px);
+           padding: 10px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+           transition: border-color 0.3s;
+           background-color: rgba(255, 255, 255, 0.8);
+       }
+
+       input[type="number"]:focus {
+           border-color: #4CAF50;
+       }
+
+       button {
+           padding: 10px;
+           font-size: 16px; /* Reduzi o tamanho da fonte para melhorar o ajuste */
+           color: #fff;
+           background-color: #4682B499;
+           border-color: #4682B4;
+           border-radius: 6px;
+           cursor: pointer;
+           margin-top: 10px; /* Ajuste para descer os botões um pouco */
+           transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+       }
+
+       button:hover {
+           background-color: #ffffff50;
+           color: #000000;
+           border-color: #00000;
+       }
+
+       #resultado {
+           margin-top: 20px;
+           font-weight: bold;
+           padding: 15px;
+           color: #ffffff;
+           text-align: center;
+           border: 2px solid transparent;
+           border-image: linear-gradient(-45deg, #4C86C4, #094688, #e6b86b) 1;
+           border-image-slice: 1;
+           transition: border 0.5s ease-in-out;
+       }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2>Calculadora de Juros</h2>
+
+    <label for="principal">Principal:</label>
+    <input type="number" id="principal" placeholder="Digite o valor principal" required>
+
+    <label for="taxa">Taxa de Juros (% ao mês):</label>
+    <input type="number" id="taxa" placeholder="Digite a taxa de juros" required>
+
+    <label for="tempo">Tempo (em meses):</label>
+    <input type="number" id="tempo" placeholder="Digite o tempo em meses" required>
+
+    <label for="aporte">Aporte Mensal (apenas para Juros Compostos):</label>
+    <input type="number" id="aporte" placeholder="Digite o valor do aporte mensal">
+
+    <button onclick="calcularJurosSimples()">Calcular Juros Simples</button>
+    <button onclick="calcularJurosCompostos()">Calcular Juros Compostos</button>
+
+    <h3>Resultado:</h3>
+    <p id="resultado"></p>
+</div>
+
+<script>
+    function calcularJurosSimples() {
+        var principal = parseFloat(document.getElementById('principal').value);
+        var taxa = parseFloat(document.getElementById('taxa').value);
+        var tempo = parseFloat(document.getElementById('tempo').value);
+
+        taxa = taxa / 100; // Converte taxa para mensal
+
+        var jurosSimples = principal * taxa * tempo;
+        var montante = principal + jurosSimples;
+
+        exibirResultado(jurosSimples, montante);
+    }
+
+    function calcularJurosCompostos() {
+        var principal = parseFloat(document.getElementById('principal').value);
+        var taxaAnual = parseFloat(document.getElementById('taxa').value);
+        var tempo = parseFloat(document.getElementById('tempo').value);
+        var aporte = parseFloat(document.getElementById('aporte').value) || 0;
+
+        var taxa = taxaAnual / 100; // Converte taxa para mensal
+
+        var totalPeriodos = tempo;
+        var montante = principal;
+
+        for (var i = 0; i < totalPeriodos; i++) {
+            montante = montante * (1 + taxa);
+            if (aporte !== 0) {
+                montante += aporte;
+            }
+        }
+
+        var capital = principal + (aporte * tempo);
+        var jurosCompostos = montante - capital;
+
+        exibirResultado(jurosCompostos, montante);
+    }
+
+    function exibirResultado(jurosCompostos, montante) {
+        var resultadoElement = document.getElementById('resultado');
+        resultadoElement.innerHTML = 'Juros Compostos: ' + jurosCompostos.toFixed(2) + '<br>Montante: ' + montante.toFixed(2);
+    }
+</script>
+</body>
+</html>

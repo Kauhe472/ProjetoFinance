@@ -1,14 +1,10 @@
 package ReyKash.ProjetoFinance.Controller;
 
-import ReyKash.ProjetoFinance.Model.M_Investimento;
-import ReyKash.ProjetoFinance.Repository.R_Investimentos;
 import ReyKash.ProjetoFinance.Service.S_TipoInvestimento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class C_Ferramentas {
@@ -31,10 +27,22 @@ public class C_Ferramentas {
         return "Cliente/tabelaClientes";
     }
 
-    @GetMapping("/tabelaClientes/carteiraInvestimentos")
-    public String getCarteiraInvestimentos(){
-        return "Ferramentas/carteiraInvestimentos";
+    @GetMapping("/carteiraVirtual")
+    public String getCarteiraVirtual(){
+        return "Ferramentas/carteiraVirtual";
     }
+
+    @GetMapping("/calculadora")
+    public String getCalculadora(){
+        return "Ferramentas/calculadora";
+    }
+
+    @GetMapping("/chat")
+    public String getChat(){
+        return "Ferramentas/chat";
+    }
+
+
 
 
 }

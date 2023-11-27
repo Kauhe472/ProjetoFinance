@@ -104,11 +104,13 @@
                                     <div id="consultorForm" style="display: none;">
                                         <div class="form-group mt-2">
                                             <!-- Adicione este bloco dentro do formulário -->
-                                            <div class="form-group mt-2">
-                                                <label for="consultorList">Consultores Cadastrados:</label>
-                                                <datalist class="form-control" id="consultorList" name="consultorList">
-                                                    <option selected disabled>Selecione</option>
-                                                    <option th:each="consultor : ${consultores}" th:value="${consultor.id_consultor}" th:text="${consultor.nome}"></option>
+                                            <div class="mb-3">
+                                                <label for="consultor" class="form-label">Consultores Cadastrados</label>
+                                                <input list="ConsultoresList" class="form-control" id="consultor" name="consultor" th:autocomplete="off" required>
+                                                <datalist id="ConsultoresList">
+                                                    <option selected disabled>Selecione um consultor</option>
+                                                    <th:block th:each="consultor : ${tiposInvestimento}">
+                                                        <option th:value="${tipo.nome_investimento}" th:text="${tipo.nome_investimento}"></option>
                                                 </datalist>
                                             </div>
                                         </div>

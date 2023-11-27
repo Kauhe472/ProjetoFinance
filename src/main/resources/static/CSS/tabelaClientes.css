@@ -1,4 +1,4 @@
- @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 
         :root {
             --bg-color: #640000;
@@ -7,11 +7,11 @@
             --font-highlight: #bd93f9;
         }
 
-        /===== Body =====/
+        /*===== Body =====*/
 
         body {
-            background-color: #640000; /* Cor de fundo */
-            font-family: var(--font);
+            background-image: url(novo.jpg);
+            font-family: 'Montserrat', sans-serif;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -32,16 +32,15 @@
             border-radius: 40px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 4);
             display: block;
-            background: #ffc970;
+            background: #AAD3FF;
         }
 
-        /===== Header =====/
+        /*===== Header =====*/
 
         .perfil {
             display: flex;
             align-items: center;
         }
-
 
         .title {
             margin-left: 1rem;
@@ -64,93 +63,113 @@
             margin-bottom: 0.3rem;
         }
 
+        /* Balão flutuante */
+        .floating-balloon {
+            position: absolute;
+            background: #000000;
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            display: none;
+            top: 250px;
+            left: 20%;
+            transform: translateX(-70%);
+            color: white;
+        }
 
- /* Balão flutuante */
-.floating-balloon {
-    position: absolute;
-    background: transparent;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    display: none;
-    top: 300px; /* Ajusta a posição vertical para alinhar com o botão */
-    left: 20%; /* Centraliza o balão horizontalmente */
-    transform: translateX(-50%); /* Centraliza o balão horizontalmente */
-}
+        /* Estilos dos botões */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
 
+        button {
+            width: 300px;
+            display: inline-block;
+            padding: 10px;
+            background-color: #094688;
+            color: white;
+            border: 2px solid #094688;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-.floating-balloon::before {
-    content: "";
-    position: absolute;
-    border-width: 8px;
-    border-style: solid;
-    border-color: var(--purple) transparent transparent transparent;
-    top: -16px; /* Ajusta esta posição vertical para alinhar com o botão */
-    left: 50%;
-    transform: translateX(-50%);
-    animation: blinkPurple 1s infinite; /* Adiciona animação de piscar roxo */
-}
+        button:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-@keyframes blinkPurple {
-    0%, 50%, 100% {
-        border-color: var(--purple) transparent transparent transparent;
-    }
-    25%, 75% {
-        border-color: #000 transparent transparent transparent;
-    }
-}
+        /* Adicionado estilo para o hover do botão Ver perfil */
+        #perfilButton:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-.floating-balloon.blink-black::before {
-    animation: blinkBlack 1s infinite; /* Adiciona animação de piscar preto */
-}
+        /* Estilos da nav-link (mantém o fundo branco) */
+        a.nav-link.active {
+            width: 300px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #000000;
+            border: 2px solid #094688 ;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-@keyframes blinkBlack {
-    0%, 50%, 100% {
-        border-color: #000 transparent transparent transparent;
-    }
-    25%, 75% {
-        border-color: var(--purple) transparent transparent transparent;
-    }
-}
-  /* Estilos dos botões */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
+        /* Adicionado estilo para o hover da nav-link */
+        a.nav-link.active:hover {
+            background: linear-gradient(60deg,#ffffff,#094688 );
+            color: #094688;
+        }
 
-button {
-    width: 300px; /* Defina a largura desejada para os botões */
-    display: inline-block;
-    padding: 10px; /* Ajuste o preenchimento conforme necessário */
-    background-color: #640000;
-    color: white;
-    border: 2px solid #640000;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
+        #resumoBalloon {
+            position: absolute;
+            background: linear-gradient(-45deg, #4C86C4,#094688,#e6b86b );
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            display: none;
+            top: 250px;
+            left: 48%;
+            transform: translateX(-50%);
+            color: white;
+        }
 
-/* Estilos da nav-link (mantém o fundo branco) */
-a.nav-link.active {
-    width: 300px; /* Defina a largura desejada para a nav-link */
-    display: inline-block;
-    padding: 10px 20px; /* Ajuste o preenchimento conforme necessário */
-    background-color: white; /* Fundo branco */
-    color: #640000; /* Texto em vermelho (#640000) */
-    border: 2px solid #640000;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
+        /* Removido hover desnecessário para o botão Ver resumo */
+        #resumoBalloon.active {
+            display: block;
+        }
 
-a.nav-link.active:hover {
-     background: linear-gradient(45deg,  #ffc970, #640000);
-    color: #640000; /* Texto em vermelho (#640000) */
-}
+        #resumoTextArea {
+            width: 98%; /* Aumentado para 100% para ocupar a largura do balão */
+              height: 150px;
+            margin-bottom: 10px;
+            resize: none; /* Adicionado para desativar a capacidade de redimensionar */
+        }
+
+        .button-container-text {
+            display: flex;
+            justify-content: center; /* Centralizado o botão */
+            margin-top: 10px;
+        }
+
+        .save-button {
+           background-color: #000;
+            color: white;
+            border: 4px solid #000;
+            border-radius: 5px;
+            padding: 8px; /* Diminuído o padding do botão */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            display: none;
+        }

@@ -25,7 +25,7 @@ function loginCliente(){
         },
         success: function(data){
             if(data){
-                window.location.href="/homeLogado";
+                window.location.href="/ferramentas";
             }else{
                 $('.alert-container').html('<div class="alert alert-danger" role="alert">Errooouuu!</div>');
                 alert("Errooouuu!");

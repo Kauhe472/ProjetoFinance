@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,body {
+    font-size: 62.5%;
+    line-height: 1;
+    color: #585858;
+    padding: 22px 10px;
+    padding-bottom: 55px;
+    background-image: url('logo.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('novo.jpg');
+    color: black; /* Adicionado para definir a cor do texto para preto */
+        }
+
+   .container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items to the center vertically */
+    height: 65vh;
+    flex-direction: column; /* Stack children vertically */
+    margin-top: -5vh; /* Add top margin to move it higher up */
+}
+
+        span {
+    color: black; /* Adicionado para definir a cor do texto para preto nos spans */
+}
+h1 {
+    font-family: 'Amarante', Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 3.6em;
+    line-height: 1.7em;
+    margin-bottom: 10px;
+    text-align: center;
+    backgroud-color: #ffc970;
+    color: black; /* Adicionado para definir a cor do texto para preto no h1 */
+}
+#wrapper h1 {
+    font: 300 60px 'Chonburi', sans-serif;
+}
+
+        .card {
+            width: 420px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 120%;
+            height: 90%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            font-family: 'Inconsolata', monospace;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 6px rgba(0.5, 0.5, 0.9, 0.9);
+            padding: 20px;
+        }
+
+        .front {
+          background: linear-gradient(-45deg, #4C86C4,#094688,#e6b86b );
+            transform: rotateY(0deg);
+        }
+
+        .back {
+           background: linear-gradient(-45deg, #4C86C4,#094688,#e6b86b );
+            transform: rotateY(180deg);
+        }
+
+        label {
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        input {
+            width: 100%;
+            height: 30px;
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html { overflow-y: scroll; }
+body {
+  font-size: 62.5%;
+  line-height: 1;
+  color: #585858;
+  padding: 22px 10px;
+  padding-bottom: 55px;
+}
+
+
+::selection { background: #5f74a0; color: #fff; }
+::-moz-selection { background: #5f74a0; color: #fff; }
+::-webkit-selection { background: #5f74a0; color: #fff; }
+
+br { display: block; line-height: 1.6em; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+input, textarea {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong, b { font-weight: bold; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+h1 {
+  font-family: 'Amarante', Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 3.6em;
+  line-height: 1.7em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+/** page structure **/
+#wrapper {
+    display: block;
+    width: 850px;
+    margin: 0 auto;
+    padding: 10px 17px;
+    -webkit-box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.35);
+    background-color: #ffffff; /* Cor de fundo branca para o wrapper */
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(-45deg, #4C86C4,#094688,#e6b86b ) 1;
+}
+#keywords {
+  margin: 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+#keywords thead {
+    cursor: pointer;
+    background: #e6b86b;
+    border: 2px solid  #000000;
+}
+#keywords thead tr th {
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#keywords thead tr th span {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+  background: #ffc970;
+}
+
+#keywords thead tr th.headerSortUp span {
+  background-image: url('https://i.imgur.com/SP99ZPJ.png');
+}
+#keywords thead tr th.headerSortDown span {
+  background-image: url('https://i.imgur.com/RkA9MBo.png');
+}
+
+/* Gradiente para as bordas das células */
+#keywords tbody tr td {
+    text-align: center;
+    padding: 15px 10px;
+    position: relative;
+    background-color: white; /* Set the background color to white */
+    border: 1px solid black; /* Set the border to 1px solid black */
+}
+
+#keywords tbody tr:not(:last-child) td {
+    border-bottom: 1px solid black; /* Set the border-bottom for non-last rows */
+}
+
+/* Adicione uma animação de transição suave para as bordas gradientes */
+#keywords tbody tr td:hover {
+    border-image: #094688;
+    border-image-slice: 1;
+    border-width: 5px;
+    transition: border-width 0.3s;
+}
+
+        #editTableButton,
+#addRowButton {
+    background-color: #000000;
+    color: white;
+    border: 2px solid  #000000;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
+}
+
+#editTableButton:hover,
+#addRowButton:hover {
+  background:#094688; /* Cor mais escura ao passar o mouse */
+}
+
+
+#inputFields {
+    border: 3px solid;
+      border-image: linear-gradient(-45deg, #4C86C4,#094688,#e6b86b ) 1;
+    border-image-slice: 1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Estilo dos botões dentro dos inputFields */
+#inputFields button {
+    background-color: #000000;
+    color: white;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
+}
+
+#inputFields button:hover {
+    background: #094688; /* Cor mais escura ao passar o mouse */
+}
