@@ -1,4 +1,4 @@
-$("#login").click(loginCliente);
+$("#login").click(loginConsultor);
 
 $("#email").keyup(function(event){
     if (event.key === "Enter") {
@@ -8,11 +8,11 @@ $("#email").keyup(function(event){
 
 $("#senha").keyup(function(event){
     if (event.key === "Enter") {
-        loginCliente();
+        loginConsultor();
     }
 });
 
-function loginCliente(){
+function loginConsultor(){
     let email = $("#email").val();
     let senha = $("#senha").val();
 

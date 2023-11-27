@@ -1,6 +1,5 @@
 package ReyKash.ProjetoFinance.Service;
 
-import ReyKash.ProjetoFinance.Model.M_InvestimentoCliente;
 import ReyKash.ProjetoFinance.Repository.R_Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

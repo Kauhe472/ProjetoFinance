@@ -1,7 +1,6 @@
 package ReyKash.ProjetoFinance.Model;
 
 import jakarta.persistence.*;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "investimento")
@@ -9,37 +8,56 @@ public class M_Investimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_investimento")
+    private Long idInvestimento;
 
-    private int id_tipo;
-    private int id_cliente;
+    @Column(name = "id_cliente")
+    private Long idCliente;
+
+    @Column(name = "id_tipo_investimento")
+    private Long idTipoInvestimento;
+
+    @Column(name = "nome", nullable = false)
     private String nome;
-    private BigInteger valor;
+
+    @Column(name = "valor", nullable = false)
+    private Double valor;
+
+    @Column(name = "sigla", nullable = false, length = 10)
+    private String sigla;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
+    private M_Cliente m_cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_investimento", referencedColumnName = "id_tipo_investimento", insertable = false, updatable = false)
+    private M_TipoInvestimento m_tipoInvestimento;
 
 
 
-    public Long getId() {
-        return id;
+    public Long getIdInvestimento() {
+        return idInvestimento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdInvestimento(Long idInvestimento) {
+        this.idInvestimento = idInvestimento;
     }
 
-    public int getId_tipo() {
-        return id_tipo;
+    public Long getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_tipo(int id_tipo) {
-        this.id_tipo = id_tipo;
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public Long getIdTipoInvestimento() {
+        return idTipoInvestimento;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdTipoInvestimento(Long idTipoInvestimento) {
+        this.idTipoInvestimento = idTipoInvestimento;
     }
 
     public String getNome() {
@@ -50,11 +68,35 @@ public class M_Investimento {
         this.nome = nome;
     }
 
-    public BigInteger getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigInteger valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public M_Cliente getM_cliente() {
+        return m_cliente;
+    }
+
+    public void setM_cliente(M_Cliente m_cliente) {
+        this.m_cliente = m_cliente;
+    }
+
+    public M_TipoInvestimento getM_tipoInvestimento() {
+        return m_tipoInvestimento;
+    }
+
+    public void setM_tipoInvestimento(M_TipoInvestimento m_tipoInvestimento) {
+        this.m_tipoInvestimento = m_tipoInvestimento;
     }
 }

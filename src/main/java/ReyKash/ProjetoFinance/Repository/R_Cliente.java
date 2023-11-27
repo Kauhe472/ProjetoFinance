@@ -11,7 +11,6 @@ import java.util.ArrayList;
 @Repository
 public interface R_Cliente extends JpaRepository<M_Cliente, Long> {
 
-
     @Query(value="select * from clientes", nativeQuery = true)
     ArrayList<M_Cliente> listClientes();
 

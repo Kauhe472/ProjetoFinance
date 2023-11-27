@@ -1,9 +1,7 @@
 package ReyKash.ProjetoFinance.Service;
 
-import ReyKash.ProjetoFinance.Model.M_Cliente;
 import ReyKash.ProjetoFinance.Model.M_Consultor;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
-import ReyKash.ProjetoFinance.Repository.R_Cliente;
 import ReyKash.ProjetoFinance.Repository.R_Consultor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -28,17 +26,20 @@ public class S_Consultor {
         return r_consultor.listConsultores();
     }
 
+    public static List<M_Consultor> listarConsultores() {
+        return r_consultor.listConsultores();
+    }
 
-    public static M_Consultor verificaLogin(String email, String senha){
+    public static M_Consultor verificaLogin(String email, String senha) {
         email = S_Generico.limparNumero(email);
 
-        if(S_Generico.textoEstaVazio(email)){
-            return null;
-        }else if(S_Generico.textoEstaVazio(senha)){
+        if (S_Generico.textoEstaVazio(email) || S_Generico.textoEstaVazio(senha)) {
             return null;
         }
+
         return r_consultor.buscarEmailSenha(email, senha);
     }
+
 
     public static M_Resposta salvarCadastro(String nome, String email, String cpf,
                                               String data_nasc, String senha, String confSenha){

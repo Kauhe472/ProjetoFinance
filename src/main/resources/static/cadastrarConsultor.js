@@ -48,24 +48,28 @@ function cadastrarConsultor(){
 
 	if(cadastroValido){
             $.ajax({
-                type: "POST",
-                url: "/cadastroConsultor",
-                data: {
-                    nome: nome,
-                    email: email,
-                    cpf: cpf,
-                    data_nasc: data_nasc,
-                    senha: senha,
-                    confSenha: confSenha,
-                },
-                success: function(data){
-                    showToast(data);
-                },
-                error: function(){
-                    showToast({sucesso: false, mensagem: "Erro ao enviar o cadastro!"});
-                }
-            })
-        }
+                    type: "POST",
+                    url: "/cadastroConsultor",
+                    data: {
+                        nome: nome,
+                        email: email,
+                        cpf: cpf,
+                        data_nasc: data_nasc,
+                        senha: senha,
+                        confSenha: confSenha,
+                    },
+                    success: function (data) {
+
+                        window.location.href = "/homeLogado";
+                        localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
+
+                    },
+                    error: function () {
+                        showToast({ sucesso: false, mensagem: "Erro ao enviar o cadastro!" });
+                    }
+                });
+            }
+    }
 }
 
 

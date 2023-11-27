@@ -6,7 +6,6 @@ import ReyKash.ProjetoFinance.Repository.R_Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.tags.EditorAwareTag;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

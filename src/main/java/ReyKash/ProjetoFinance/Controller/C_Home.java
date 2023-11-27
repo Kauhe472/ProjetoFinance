@@ -16,6 +16,11 @@ public class C_Home {
         return "Home/home";
     }
 
+    @GetMapping("/homeLogado")
+    public String HomeLogado() {
+        return "Home/homeLogado";
+    }
+
     @GetMapping("/sobrenos")
     public String getSobrenos(){
         return "Home/sobrenos";

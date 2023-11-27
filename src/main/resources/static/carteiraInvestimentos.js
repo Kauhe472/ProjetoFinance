@@ -1,246 +1,42 @@
-am5.ready(function() {
+function addInvestimento(){
+    let investimentoValido = true
 
-// Set up data
-var data = [{
-  category: "Critical",
-  value: 89,
-  sliceSettings: {
-    fill: am5.color(0xdc4534),
-  },
-  breakdown: [{
-    category: "Sales inquiries",
-    value: 29
-  }, {
-    category: "Support requests",
-    value: 40
-  }, {
-    category: "Bug reports",
-    value: 11
-  }, {
-    category: "Other",
-    value: 9
-  }]
-}, {
-  category: "Acceptable",
-  value: 71,
-  sliceSettings: {
-    fill: am5.color(0xd7a700),
-  },
-  breakdown: [{
-    category: "Sales inquiries",
-    value: 22
-  }, {
-    category: "Support requests",
-    value: 30
-  }, {
-    category: "Bug reports",
-    value: 11
-  }, {
-    category: "Other",
-    value: 10
-  }]
-}, {
-  category: "Good",
-  value: 120,
-  sliceSettings: {
-    fill: am5.color(0x68ad5c),
-  },
-  breakdown: [{
-    category: "Sales inquiries",
-    value: 60
-  }, {
-    category: "Support requests",
-    value: 35
-  }, {
-    category: "Bug reports",
-    value: 15
-  }, {
-    category: "Other",
-    value: 10
-  }]
-}]
+	let tipo = $("#tipo").val();
+	let tag = $("#tag").val();
+	let valor = $("#valor").val();
 
-// Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv");
+	if(investimentoValido){
+            $.ajax({
+                    type: "POST",
+                    url: "/carteiraInvestimentos",
+                    data: {
+                        tipo: tipo,
+                        tag: tag,
+                        valor: valor,
+                    },
+                    success: function (data) {
+                        window.location.href = "/carteiraInvestimentos";
+                        localStorage.setItem("mensagemCadastro", "Investimento Adicionado");
 
+                    },
+                    error: function () {
+                        showToast({ sucesso: false, mensagem: "Erro ao enviar o cadastro!" });
+                    }
+                });
+            }
+    }
+}
 
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
-
-// Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
-  width: am5.p100,
-  height: am5.p100,
-  layout: root.horizontalLayout
-}));
-
-
-// ==============================================
-// Column chart
-// ==============================================
-
-// Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
-var columnChart = container.children.push(am5xy.XYChart.new(root, {
-  width: am5.p50,
-  panX: false,
-  panY: false,
-  wheelX: "none",
-  wheelY: "none",
-  layout: root.verticalLayout
-}));
-
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var yRenderer = am5xy.AxisRendererY.new(root, {});
-var yAxis = columnChart.yAxes.push(am5xy.CategoryAxis.new(root, {
-  categoryField: "category",
-  renderer: yRenderer
-}));
-
-yRenderer.grid.template.setAll({
-  location: 1
-})
-
-var xAxis = columnChart.xAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererX.new(root, {
-    strokeOpacity: 0.1
-  })
-}));
-
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var columnSeries = columnChart.series.push(am5xy.ColumnSeries.new(root, {
-  name: name,
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueXField: "value",
-  categoryYField: "category"
-}));
-
-columnSeries.columns.template.setAll({
-  tooltipText: "{categoryY}: {valueX}"
+$(document).ready(function () {
+    // Fazer uma requisição AJAX para obter a lista de consultores do endpoint
+    $.ajax({
+        type: "GET",
+        url: "/carteiraInvestimento",
+        success: function (data) {
+            $("#tiposInvestimentoDataList").html(data);
+        },
+        error: function () {
+            alert("Falha ao obter a lista tipo investimento");
+        }
+    });
 });
-
-//series.data.setAll(data);
-
-// Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
-columnChart.appear(1000, 100);
-
-
-// ==============================================
-// Column chart
-// ==============================================
-
-var pieChart = container.children.push(
-  am5percent.PieChart.new(root, {
-    width: am5.p50,
-    innerRadius: am5.percent(50)
-  })
-);
-
-// Create series
-var pieSeries = pieChart.series.push(
-  am5percent.PieSeries.new(root, {
-    valueField: "value",
-    categoryField: "category"
-  })
-);
-
-pieSeries.slices.template.setAll({
-  templateField: "sliceSettings",
-  strokeOpacity: 0
-});
-
-var currentSlice;
-pieSeries.slices.template.on("active", function(active, slice) {
-  if (currentSlice && currentSlice != slice && active) {
-    currentSlice.set("active", false)
-  }
-
-  var color = slice.get("fill");
-
-  label1.setAll({
-    fill: color,
-    text: root.numberFormatter.format(slice.dataItem.get("valuePercentTotal"), "#.'%'")
-  });
-
-  label2.set("text", slice.dataItem.get("category"));
-
-  columnSeries.columns.template.setAll({
-    fill: slice.get("fill"),
-    stroke: slice.get("fill")
-  });
-
-  columnSeries.data.setAll(slice.dataItem.dataContext.breakdown);
-  yAxis.data.setAll(slice.dataItem.dataContext.breakdown);
-
-  currentSlice = slice;
-});
-
-pieSeries.labels.template.set("forceHidden", true);
-pieSeries.ticks.template.set("forceHidden", true);
-
-pieSeries.data.setAll(data);
-
-// Add label
-var label1 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
-  text: "",
-  fontSize: 35,
-  fontweight: "bold",
-  centerX: am5.p50,
-  centerY: am5.p50
-}));
-
-var label2 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
-  text: "",
-  fontSize: 12,
-  centerX: am5.p50,
-  centerY: am5.p50,
-  dy: 30
-}));
-
-// Pre-select first slice
-pieSeries.events.on("datavalidated", function() {
-  pieSeries.slices.getIndex(0).set("active", true);
-});
-
-
-// Obtendo os dados do SQL
-  var dataFromSQL = [
-    // Substitua esta estrutura com os dados reais da sua view investimentoCliente
-    {
-      cliente: "Cliente 1",
-      investimento: "Sem Investimento",
-      valor: 500
-    },
-    {
-      cliente: "Cliente 2",
-      investimento: "Investimento A",
-      valor: 1200
-    },
-    // ... Adicione os demais dados conforme necessário
-  ];
-
-  // Criando a estrutura de dados para o gráfico
-  var data = dataFromSQL.map(function(item) {
-    return {
-      category: item.cliente,
-      value: item.valor,
-      sliceSettings: {
-        fill: am5.color(0x68ad5c), // Cor da fatia do gráfico de pizza (ajuste conforme necessário)
-      },
-      breakdown: [
-        // Adicione os detalhes específicos do investimento aqui, se necessário
-      ]
-    };
-  });
-
-
-}); // end am5.ready()

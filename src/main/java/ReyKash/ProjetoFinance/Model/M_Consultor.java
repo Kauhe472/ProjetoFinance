@@ -10,6 +10,7 @@ public class M_Consultor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_consultor")
     private Long id_consultor;
     private String nome;
     private String email;
