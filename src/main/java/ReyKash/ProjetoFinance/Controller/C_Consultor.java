@@ -62,7 +62,7 @@ public class C_Consultor {
         } else {
             // Login falhou
             session.setAttribute("consultores", false);
-            return "redirect:/login?error=true";
+            return "redirect:/";
         }
     }
 
