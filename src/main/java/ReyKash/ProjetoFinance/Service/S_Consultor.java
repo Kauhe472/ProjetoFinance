@@ -1,7 +1,9 @@
 package ReyKash.ProjetoFinance.Service;
 
+import ReyKash.ProjetoFinance.Model.M_Cliente;
 import ReyKash.ProjetoFinance.Model.M_Consultor;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
+import ReyKash.ProjetoFinance.Repository.R_Cliente;
 import ReyKash.ProjetoFinance.Repository.R_Consultor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,29 +16,30 @@ import java.util.List;
 
 @Service
 public class S_Consultor {
-
     @Autowired
     private static R_Consultor r_consultor;
 
+
     public S_Consultor(R_Consultor r_consultor) {
         this.r_consultor = r_consultor;
-    }
-
-    public static List<M_Consultor> listarClientes() {
-        return r_consultor.listConsultores();
     }
 
     public static List<M_Consultor> listarConsultores() {
         return r_consultor.listConsultores();
     }
 
-    public static M_Consultor verificaLogin(String email, String senha) {
-        email = S_Generico.limparNumero(email);
+    //public List<M_Cliente> obterClientesPorConsultor(Long id_consultor) {
+        //return r_consultor.buscarClientesPorConsultor(id_consultor);
+    //}
 
-        if (S_Generico.textoEstaVazio(email) || S_Generico.textoEstaVazio(senha)) {
+    public static M_Consultor verificaLogin(String email, String senha){
+//        email = S_Generico.limparNumero(email);
+
+        if(S_Generico.textoEstaVazio(email)){
+            return null;
+        }else if(S_Generico.textoEstaVazio(senha)){
             return null;
         }
-
         return r_consultor.buscarEmailSenha(email, senha);
     }
 

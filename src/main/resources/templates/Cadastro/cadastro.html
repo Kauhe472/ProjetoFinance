@@ -109,8 +109,7 @@
                                                 <input list="ConsultoresList" class="form-control" id="consultor" name="consultor" th:autocomplete="off" required>
                                                 <datalist id="ConsultoresList">
                                                     <option selected disabled>Selecione um consultor</option>
-                                                    <th:block th:each="consultor : ${tiposInvestimento}">
-                                                        <option th:value="${tipo.nome_investimento}" th:text="${tipo.nome_investimento}"></option>
+                                                        <option th:each="consultor : ${consultores}" th:data-value="${consultor.id_consultor}" th:value="${consultor.nome}"></option>
                                                 </datalist>
                                             </div>
                                         </div>

@@ -18,7 +18,9 @@
         }
 
         .centered {
-            position: fixed;
+            position: relative;
+            margin-bottom: 20px;
+            text-align: center;
             top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -33,6 +35,7 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 4);
             display: block;
             background: #AAD3FF;
+
         }
 
         /*===== Header =====*/
@@ -143,6 +146,7 @@
             left: 48%;
             transform: translateX(-50%);
             color: white;
+
         }
 
         /* Removido hover desnecessário para o botão Ver resumo */

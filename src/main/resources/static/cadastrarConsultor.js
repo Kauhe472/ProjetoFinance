@@ -60,7 +60,7 @@ function cadastrarConsultor(){
                     },
                     success: function (data) {
 
-                        window.location.href = "/homeLogado";
+                        window.location.href = "/ferramentas";
                         localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
 
                     },

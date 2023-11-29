@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class S_Cliente {
@@ -23,13 +25,27 @@ public class S_Cliente {
     }
 
 
-    public static List<M_Cliente> listarClientes() {
+    /*@Autowired
+    private S_CarteiraVirtual s_carteiraVirtual; // Injeção do serviço da carteira virtual
+
+    public M_Cliente obterClienteComCarteira(Long id_cliente) {
+        M_Cliente cliente = r_cliente.obterClienteComCarteira(id_cliente);
+        if (cliente != null) {
+            List<M_CarteiraVirtual> carteiraVirtual = s_carteiraVirtual.obterDetalhesCarteiraPorCliente(id_cliente);
+            cliente.setCarteiraVirtual(carteiraVirtual);
+        }
+        return cliente;
+    }*/
+
+    public static List<M_Cliente> listarClientesDoConsultor(Long id_consultor) {
+        return r_cliente.buscaClientesPorConsultor(id_consultor);
+    }
+
+    public static ArrayList<M_Cliente> listarClientes() {
         return r_cliente.listClientes();
     }
 
-
     public static M_Cliente verificaLogin(String email, String senha){
-        email = S_Generico.limparNumero(email);
 
         if(S_Generico.textoEstaVazio(email)){
             return null;
@@ -40,7 +56,7 @@ public class S_Cliente {
     }
 
     public static M_Resposta salvarCadastro(String nome, String email, String cpf,
-                                              String data_nasc, String senha, String confSenha){
+                                              String data_nasc, String senha, String confSenha, String id_consultor){
         boolean cadastroValido = true;
         String mensagem = "";
 
@@ -91,6 +107,7 @@ public class S_Cliente {
             m_cliente.setCpf(Long.parseLong(S_CPF.limparNumero(cpf)));
             m_cliente.setData_nasc(LocalDate.parse(data_nasc));
             m_cliente.setSenha(senha);
+            m_cliente.setId_consultor(Long.parseLong(id_consultor));
 
             try {
                 r_cliente.save(m_cliente);

@@ -1,6 +1,7 @@
 package ReyKash.ProjetoFinance.Model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,21 @@ public class M_Cliente {
     private Long cpf;
     private LocalDate data_nasc;
     private String senha;
+
+    private Long id_consultor;
+
+    /*private List<M_CarteiraVirtual> carteiraVirtual;
+
+
+    public void setCarteiraVirtual(List<M_CarteiraVirtual> carteiraVirtual) {
+        this.carteiraVirtual = carteiraVirtual;
+    }
+
+    public List<M_CarteiraVirtual> getCarteiraVirtual() {
+        return carteiraVirtual;
+    }*/
+
+
 
     public Long getId_cliente() {
         return id_cliente;
@@ -62,5 +78,13 @@ public class M_Cliente {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Long getId_consultor() {
+        return id_consultor;
+    }
+
+    public void setId_consultor(Long id_consultor) {
+        this.id_consultor = id_consultor;
     }
 }

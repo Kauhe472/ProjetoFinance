@@ -19,12 +19,8 @@ public class C_Ferramentas {
     @GetMapping("/carteiraInvestimento")
     public String getCarteiraInvestimento(Model model){
         model.addAttribute("tiposInvestimento", s_tipoInvestimento.listarTiposInvestimentos());
-        return "Ferramentas/carteiraInvestimento";
-    }
 
-    @GetMapping("/tabelaClientes")
-    public String getTabelaClientes(){
-        return "Cliente/tabelaClientes";
+        return "Ferramentas/carteiraInvestimento";
     }
 
     @GetMapping("/carteiraVirtual")
@@ -41,8 +37,6 @@ public class C_Ferramentas {
     public String getChat(){
         return "Ferramentas/chat";
     }
-
-
 
 
 }

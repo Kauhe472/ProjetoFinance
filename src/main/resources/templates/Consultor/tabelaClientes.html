@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div class="container centered">
+<div th:each="cliente : ${clientes}" class="container centered">
     <header class="perfil">
         <div class="perfil-image">
             <div class="icon">
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="title">
-            <h1>nome do usuário</h1>
+            <h1 th:text="${cliente.nome}"></h1>
         </div>
     </header>
 
@@ -35,7 +35,9 @@
 
     <div class="button-container">
         <div class="button-container">
-            <a class="nav-link active" aria-current="page" href="/carteiraVirtual"> Carteira Virtual</a>
+            <a class="nav-link active" aria-current="page" href="/carteiraVirtual"
+            > Carteira Virtual</a>
+
         </div>
         <div class="floating-balloon" id="dadosPerfil">
 
