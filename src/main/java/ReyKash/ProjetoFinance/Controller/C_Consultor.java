@@ -18,39 +18,33 @@ import java.util.List;
 @Controller
 public class C_Consultor {
 
-    @GetMapping("/cadastroConsultor")
+    @GetMapping("/cadastro")
     public String getCadastroConsultor() {
-        return "Cadastro/cadastroConsultor";
+        return "Cadastro/cadastro";
     }
 
-    @PostMapping("/cadastroConsultor")
+    @PostMapping("/cadastro")
     @ResponseBody
     public M_Resposta postCadastroConsultor(@RequestParam("nome") String nome,
                                             @RequestParam("email") String email,
                                             @RequestParam("cpf") String cpf,
                                             @RequestParam("data_nasc") String data_nasc,
                                             @RequestParam("senha") String senha,
-                                            @RequestParam("confSenha") String confSenha) {
-        return S_Consultor.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
+                                            @RequestParam("confSenha") String confSenha,
+                                            @RequestParam("tipoConsultor") String tipoConsultor) {
+        return S_Consultor.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha, tipoConsultor);
     }
 
+    @GetMapping("/ferramentas")
+    public String getFerramentas(){
+        return "Consultor/ferramentas";
+    }
 
     @GetMapping("/tabelaClientes")
-    public String getTabelaClientes(Model model,
-                                    HttpSession session) {
-        Long idConsultor = (Long) session.getAttribute("id_consultor");
-
-        if (idConsultor != null) {
-            List<M_Cliente> clientesDoConsultor = S_Cliente.listarClientesDoConsultor(idConsultor);
-
-            model.addAttribute("clientes", clientesDoConsultor);
-
-            return "Consultor/tabelaClientes";
-        }
-        else {
-            return "redirect:/login";
-        }
+    public String getTabelaClientes(){
+        return "Consultor/tabelaClientes";
     }
+
     @GetMapping("/carteiraInvestimentos")
     public String getCarteiraInvestimentos(Model model){
         model.addAttribute("investimentoCliente", S_Investimentos.listarInvestimentoCliente());

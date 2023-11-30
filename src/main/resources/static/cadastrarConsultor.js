@@ -14,6 +14,8 @@ function cadastrarConsultor(){
 	let data_nasc = $("#data_nasc").val();
 	let senha = $("#senha").val();
 	let confSenha = $("#confSenha").val();
+    let tipoConsultor = $("#tipoConsultor").val();
+
 
     if(campoVazio(nome)){
     		podeEnviar = false;
@@ -49,7 +51,7 @@ function cadastrarConsultor(){
 	if(cadastroValido){
             $.ajax({
                     type: "POST",
-                    url: "/cadastroConsultor",
+                    url: "/cadastro",
                     data: {
                         nome: nome,
                         email: email,
@@ -57,9 +59,9 @@ function cadastrarConsultor(){
                         data_nasc: data_nasc,
                         senha: senha,
                         confSenha: confSenha,
+                        tipoConsultor: tipoConsultor,
                     },
                     success: function (data) {
-
                         window.location.href = "/ferramentas";
                         localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
 

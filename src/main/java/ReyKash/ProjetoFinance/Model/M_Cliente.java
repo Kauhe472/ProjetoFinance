@@ -17,8 +17,6 @@ public class M_Cliente {
     private LocalDate data_nasc;
     private String senha;
 
-    private Long id_consultor;
-
     /*private List<M_CarteiraVirtual> carteiraVirtual;
 
 
@@ -80,11 +78,5 @@ public class M_Cliente {
         this.senha = senha;
     }
 
-    public Long getId_consultor() {
-        return id_consultor;
-    }
 
-    public void setId_consultor(Long id_consultor) {
-        this.id_consultor = id_consultor;
-    }
 }

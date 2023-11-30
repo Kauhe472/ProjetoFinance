@@ -29,7 +29,6 @@
 <body>
 <div class="container">
 
-
     <div class="section">
         <div class="container">
             <div class="row full-height justify-content-center">
@@ -45,7 +44,6 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3"><i class="fas fa-user"></i> Log In</h4>
 
-
                                         <div class="form-group">
                                             <input type="email" name="email" class="form-style" placeholder="Seu email"
                                                    id="email" autocomplete="off">
@@ -59,7 +57,7 @@
 
                                         <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
 
-                                        <a id="login" type="button" onclick="loginCliente()" class="btn mt-4"><i class="fas fa-check"></i> Submit</a>
+                                        <a id="login" type="button" onclick="login()" class="btn mt-4"><i class="fas fa-check"></i> Submit</a>
 
                                         <p class="mb-0 mt-4 text-center"><a href="/cadastro" class="link">Não tem uma conta? Crie uma!</a></p>
 
@@ -74,27 +72,7 @@
         </div>
     </div>
 </div>
-    <script>
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // Identificando o elemento select
-            const selectOption = document.getElementById('optionForm');
-
-            // Adicionando um ouvinte de evento à mudança no select
-            selectOption.addEventListener('change', function () {
-                // Obtendo o valor selecionado
-                const selectedValue = selectOption.value;
-
-                // Redirecionando o usuário com base na opção selecionada
-                if (selectedValue === 'cliente') {
-                    window.location.href = '/login';
-                } else if (selectedValue === 'consultor') {
-                    window.location.href = '/loginConsultor';
-                }
-            });
-        });
-
-    </script>
 
 </body>
 </html>

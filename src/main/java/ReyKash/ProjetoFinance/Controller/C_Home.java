@@ -26,9 +26,5 @@ public class C_Home {
         return "Home/sobrenos";
     }
 
-    @GetMapping("/ferramentas")
-    public String getFeramentas(){
-        return "Consultor/ferramentas";
-    }
 
 }

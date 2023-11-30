@@ -22,7 +22,6 @@ public interface R_Cliente extends JpaRepository<M_Cliente, Long> {
     M_Cliente obterClienteComCarteira(@Param("id_cliente") Long id_cliente);
 */
 
-
     @Query(value="select * from investimentoCliente", nativeQuery = true)
     ArrayList<Object> listInvestimento();
 
@@ -32,5 +31,6 @@ public interface R_Cliente extends JpaRepository<M_Cliente, Long> {
     @Query(value = "SELECT * FROM clientes WHERE email = :email AND senha = :senha", nativeQuery = true)
     M_Cliente buscarEmailSenha (@Param("email") String email,
                                 @Param("senha") String senha);
+
 
 }

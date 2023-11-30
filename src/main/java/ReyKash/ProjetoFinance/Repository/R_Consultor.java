@@ -23,9 +23,7 @@ public interface R_Consultor extends JpaRepository<M_Consultor, Long> {
                     "WHERE consultores.id_consultor = :id",
                     nativeQuery = true)
     List<M_Cliente> buscarClientesPorConsultor(@Param("id_consultor") Long id_consultor);
-
      */
-
 
 
     @Query(value = "SELECT * FROM consultores WHERE email = :email AND senha = :senha", nativeQuery = true)
