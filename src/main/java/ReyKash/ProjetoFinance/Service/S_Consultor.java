@@ -5,6 +5,7 @@
     import ReyKash.ProjetoFinance.Model.M_Resposta;
     import ReyKash.ProjetoFinance.Repository.R_Cliente;
     import ReyKash.ProjetoFinance.Repository.R_Consultor;
+    import jakarta.servlet.http.HttpSession;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.dao.DataIntegrityViolationException;
     import org.springframework.stereotype.Service;
@@ -33,21 +34,26 @@
         //}
 
 
-        public static M_Consultor verificaLogin(String email, String senha){
-
-            if(S_Generico.textoEstaVazio(email)){
-                return null;
-            }else if(S_Generico.textoEstaVazio(senha)){
+        public static M_Consultor verificaLogin(String email, String senha, HttpSession session) {
+            if (S_Generico.textoEstaVazio(email) || S_Generico.textoEstaVazio(senha)) {
                 return null;
             }
-            return r_consultor.buscarEmailSenha(email, senha);
+
+            M_Consultor consultor = r_consultor.buscarEmailSenha(email, senha);
+
+            if (consultor != null) {
+                session.setAttribute("id_consultor", consultor.getId_consultor());
+                return consultor;
+            }
+
+            return null;
         }
 
 
 
 
         public static M_Resposta salvarCadastro(String nome, String email, String cpf,
-                                                  String data_nasc, String senha, String confSenha, String tipoConsultor){
+                                                  String data_nasc, String senha, String confSenha, String tipo_consultor){
             boolean cadastroValido = true;
             String mensagem = "";
 
@@ -90,7 +96,7 @@
                 mensagem += "A senha e a confirmação de senha precisam ser iguais!";
             }
 
-            if(S_Generico.textoEstaVazio(tipoConsultor)){
+            if(S_Generico.textoEstaVazio(tipo_consultor)){
                 cadastroValido = false;
                 mensagem += "O tipo consultor precisa ser preenchido!";
             }
@@ -102,7 +108,7 @@
                 m_consultor.setCpf(Long.parseLong(S_CPF.limparNumero(cpf)));
                 m_consultor.setData_nasc(LocalDate.parse(data_nasc));
                 m_consultor.setSenha(senha);
-                m_consultor.setTipoConsultor(tipoConsultor);
+                m_consultor.setTipo_consultor(tipo_consultor);
 
                 try {
                     r_consultor.save(m_consultor);

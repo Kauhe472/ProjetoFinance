@@ -5,12 +5,6 @@
       }
     });
 
- document.addEventListener("keydown", function(event) {
-      if (event.key === "Enter" && document.activeElement.id === "btn") {
-        event.preventDefault();
-        cadastrarCliente();
-      }
-    });
 
 $(document).ready(function () {
     // Fazer uma requisição AJAX para obter a lista de consultores do endpoint /consultores

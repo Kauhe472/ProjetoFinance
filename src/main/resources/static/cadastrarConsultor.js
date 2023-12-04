@@ -5,78 +5,71 @@
       }
     });
 
-function cadastrarConsultor(){
-    let cadastroValido = true
 
-	let nome = $("#nome").val();
-	let email = $("#email").val();
-	let cpf = $("#cpf").val();
-	let data_nasc = $("#data_nasc").val();
-	let senha = $("#senha").val();
-	let confSenha = $("#confSenha").val();
-    let tipoConsultor = $("#tipoConsultor").val();
+function cadastrarConsultor() {
+  let cadastroValido = true;
 
+  let nome = $("#nome").val();
+  let email = $("#email").val();
+  let cpf = $("#cpf").val();
+  let data_nasc = $("#data_nasc").val();
+  let senha = $("#senha").val();
+  let confSenha = $("#confSenha").val();
+  let tipo_consultor = $("#tipo_consultor").val();
 
-    if(campoVazio(nome)){
-    		podeEnviar = false;
-    		$(".nome").addClass("error-field");
-    		showToast({sucesso:false,mensagem:"O nome precisa ser preenchido!"});
-    	}
-    	if(campoVazio(email)){
-            		podeEnviar = false;
-            		$(".email").addClass("error-field");
-            		showToast({sucesso:false,mensagem:"É necessário informar um email!"});
-            	}
-    	if(!validarCPF(cpf)){
-            podeEnviar = false;
-            $(".cpf").addClass("error-field");
-            showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
-        }
-        if(campoVazio(data_nasc)){
-                    podeEnviar = false;
-                    $(".data_nasc").addClass("error-field");
-                    showToast({sucesso:false,mensagem:"A idade é invalida!"});
-                }
-    	if(campoVazio(senha)){
-    		podeEnviar = false;
-    		$(".senha").addClass("error-field");
-    		showToast({sucesso:false,mensagem:"É necessário informar uma senha!"});
-    	}else if(senha != confSenha){
-    		podeEnviar = false;
-    		$(".senha").addClass("error-field");
-    		showToast({sucesso:false,mensagem:"A Senha e a confirmação de senha não conferem!"});
-    	}
+  if (campoVazio(nome)) {
+    cadastroValido = false;
+    $(".nome").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "O nome precisa ser preenchido!" });
+  }
+  if (campoVazio(email)) {
+    cadastroValido = false;
+    $(".email").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "É necessário informar um email!" });
+  }
+  if (!validarCPF(cpf)) {
+    cadastroValido = false;
+    $(".cpf").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "O CPF informado é inválido!" });
+  }
+  if (campoVazio(data_nasc)) {
+    cadastroValido = false;
+    $(".data_nasc").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "A idade é inválida!" });
+  }
+  if (campoVazio(senha)) {
+    cadastroValido = false;
+    $(".senha").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "É necessário informar uma senha!" });
+  } else if (senha != confSenha) {
+    cadastroValido = false;
+    $(".senha").addClass("error-field");
+    showToast({ sucesso: false, mensagem: "A Senha e a confirmação de senha não conferem!" });
+  }
 
-
-	if(cadastroValido){
-            $.ajax({
-                    type: "POST",
-                    url: "/cadastro",
-                    data: {
-                        nome: nome,
-                        email: email,
-                        cpf: cpf,
-                        data_nasc: data_nasc,
-                        senha: senha,
-                        confSenha: confSenha,
-                        tipoConsultor: tipoConsultor,
-                    },
-                    success: function (data) {
-                        window.location.href = "/ferramentas";
-                        localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
-
-                    },
-                    error: function () {
-                        showToast({ sucesso: false, mensagem: "Erro ao enviar o cadastro!" });
-                    }
-                });
-            }
-    }
-
-
-
-
-
+  if (cadastroValido) {
+    $.ajax({
+      type: "POST",
+      url: "/cadastro",
+      data: {
+        nome: nome,
+        email: email,
+        cpf: cpf,
+        data_nasc: data_nasc,
+        senha: senha,
+        confSenha: confSenha,
+        tipo_consultor: tipo_consultor,
+      },
+      success: function (data) {
+        window.location.href = "/";
+        localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
+      },
+      error: function () {
+        showToast({ sucesso: false, mensagem: "Erro ao enviar o cadastro!" });
+      },
+    });
+  }
+}
 
  function validarCPF() {
             var cpf = document.getElementById("cpf").value.replace(/[^\d]+/g,'');

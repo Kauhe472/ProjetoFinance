@@ -13,6 +13,7 @@ public class M_TipoInvestimento {
     private String nome_investimento;
 
 
+
     public Long getId_tipo_investimento() {
         return id_tipo_investimento;
     }

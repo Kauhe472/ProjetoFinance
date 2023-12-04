@@ -16,16 +16,8 @@ public class M_Consultor {
     private Long cpf;
     private LocalDate data_nasc;
     private String senha;
-    private String tipoConsultor;
+    private String tipo_consultor;
 
-
-    public String getTipoConsultor() {
-        return tipoConsultor;
-    }
-
-    public void setTipoConsultor(String tipoConsultor) {
-        this.tipoConsultor = tipoConsultor;
-    }
 
     public Long getId_consultor() {
         return id_consultor;
@@ -74,6 +66,15 @@ public class M_Consultor {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getTipo_consultor() {
+        return tipo_consultor;
+    }
+
+    public void setTipo_consultor(String tipo_consultor) {
+        this.tipo_consultor = tipo_consultor;
+    }
+
 }
 
 

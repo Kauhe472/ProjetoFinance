@@ -4,16 +4,17 @@ import ReyKash.ProjetoFinance.Model.M_Cliente;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
 import ReyKash.ProjetoFinance.Service.S_Cliente;
 import ReyKash.ProjetoFinance.Service.S_Consultor;
-import ReyKash.ProjetoFinance.Service.S_Investimentos;
+import ReyKash.ProjetoFinance.Service.S_Investimento;
+import ReyKash.ProjetoFinance.Service.S_Investimento;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+
 
 @Controller
 public class C_Consultor {
@@ -24,32 +25,22 @@ public class C_Consultor {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
-    public M_Resposta postCadastroConsultor(@RequestParam("nome") String nome,
-                                            @RequestParam("email") String email,
-                                            @RequestParam("cpf") String cpf,
-                                            @RequestParam("data_nasc") String data_nasc,
-                                            @RequestParam("senha") String senha,
-                                            @RequestParam("confSenha") String confSenha,
-                                            @RequestParam("tipoConsultor") String tipoConsultor) {
-        return S_Consultor.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha, tipoConsultor);
+    public String postCadastroConsultor(@RequestParam("nome") String nome,
+                                        @RequestParam("email") String email,
+                                        @RequestParam("cpf") String cpf,
+                                        @RequestParam("data_nasc") String data_nasc,
+                                        @RequestParam("senha") String senha,
+                                        @RequestParam("confSenha") String confSenha,
+                                        @RequestParam("tipo_consultor") String tipo_consultor,
+                                        HttpSession session,
+                                        Model model) {
+        M_Resposta resposta = S_Consultor.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha, tipo_consultor);
+
+        // Se chegou aqui, houve algum erro no cadastro
+        model.addAttribute("resposta", resposta);
+        return "Cadastro/cadastro";
     }
 
-    @GetMapping("/ferramentas")
-    public String getFerramentas(){
-        return "Consultor/ferramentas";
-    }
-
-    @GetMapping("/tabelaClientes")
-    public String getTabelaClientes(){
-        return "Consultor/tabelaClientes";
-    }
-
-    @GetMapping("/carteiraInvestimentos")
-    public String getCarteiraInvestimentos(Model model){
-        model.addAttribute("investimentoCliente", S_Investimentos.listarInvestimentoCliente());
-        return "carteiraInvestimentos";
-    }
 
 
 }

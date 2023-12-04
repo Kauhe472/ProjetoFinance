@@ -3,100 +3,56 @@ package ReyKash.ProjetoFinance.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "investimento")
+@Table(name = "carteira_investimentos")
 public class M_Investimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_investimento")
-    private Long idInvestimento;
+    private Long id_carteiraInvestimento;
 
-    @Column(name = "id_cliente")
-    private Long idCliente;
-
-    @Column(name = "id_tipo_investimento")
-    private Long idTipoInvestimento;
-
-    @Column(name = "nome", nullable = false)
-    private String nome;
-
-    @Column(name = "valor", nullable = false)
-    private Double valor;
-
-    @Column(name = "sigla", nullable = false, length = 10)
-    private String sigla;
-
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
-    private M_Cliente m_cliente;
-
-    @ManyToOne
-    @JoinColumn(name = "id_tipo_investimento", referencedColumnName = "id_tipo_investimento", insertable = false, updatable = false)
-    private M_TipoInvestimento m_tipoInvestimento;
+    private M_Cliente cliente;
+    private M_TipoInvestimento tipo_investimento;
+    private String tagInvestimento;
+    private Double valorInvestimento;
 
 
-
-    public Long getIdInvestimento() {
-        return idInvestimento;
+    public Long getId_carteiraInvestimento() {
+        return id_carteiraInvestimento;
     }
 
-    public void setIdInvestimento(Long idInvestimento) {
-        this.idInvestimento = idInvestimento;
+    public void setId_carteiraInvestimento(Long id_carteiraInvestimento) {
+        this.id_carteiraInvestimento = id_carteiraInvestimento;
     }
 
-    public Long getIdCliente() {
-        return idCliente;
+    public M_TipoInvestimento getTipo_investimento() {
+        return tipo_investimento;
     }
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
+    public void setTipo_investimento(M_TipoInvestimento tipo_investimento) {
+        this.tipo_investimento = tipo_investimento;
     }
 
-    public Long getIdTipoInvestimento() {
-        return idTipoInvestimento;
+    public M_Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdTipoInvestimento(Long idTipoInvestimento) {
-        this.idTipoInvestimento = idTipoInvestimento;
+    public void setCliente(M_Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTagInvestimento() {
+        return tagInvestimento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTagInvestimento(String tagInvestimento) {
+        this.tagInvestimento = tagInvestimento;
     }
 
-    public Double getValor() {
-        return valor;
+    public Double getValorInvestimento() {
+        return valorInvestimento;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
-    public M_Cliente getM_cliente() {
-        return m_cliente;
-    }
-
-    public void setM_cliente(M_Cliente m_cliente) {
-        this.m_cliente = m_cliente;
-    }
-
-    public M_TipoInvestimento getM_tipoInvestimento() {
-        return m_tipoInvestimento;
-    }
-
-    public void setM_tipoInvestimento(M_TipoInvestimento m_tipoInvestimento) {
-        this.m_tipoInvestimento = m_tipoInvestimento;
+    public void setValorInvestimento(Double valorInvestimento) {
+        this.valorInvestimento = valorInvestimento;
     }
 }

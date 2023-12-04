@@ -14,21 +14,19 @@ public class M_Cliente {
     private String nome;
     private String email;
     private Long cpf;
+    @Column(name = "data_nasc", columnDefinition = "DATE")
     private LocalDate data_nasc;
     private String senha;
+    private Long id_consultor;
 
-    /*private List<M_CarteiraVirtual> carteiraVirtual;
 
-
-    public void setCarteiraVirtual(List<M_CarteiraVirtual> carteiraVirtual) {
-        this.carteiraVirtual = carteiraVirtual;
+    public Long getIdConsultor() {
+        return id_consultor;
     }
 
-    public List<M_CarteiraVirtual> getCarteiraVirtual() {
-        return carteiraVirtual;
-    }*/
-
-
+    public void setIdConsultor(Long id_consultor) {
+        this.id_consultor = id_consultor;
+    }
 
     public Long getId_cliente() {
         return id_cliente;

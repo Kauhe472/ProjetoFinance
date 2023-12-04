@@ -1,4 +1,7 @@
-function addInvestimento(){
+
+
+
+function salvarInvestimento(){
     let investimentoValido = true
 
 	let tipo = $("#tipo").val();
@@ -25,18 +28,4 @@ function addInvestimento(){
                 });
             }
     }
-}
 
-$(document).ready(function () {
-    // Fazer uma requisição AJAX para obter a lista de consultores do endpoint
-    $.ajax({
-        type: "GET",
-        url: "/carteiraInvestimento",
-        success: function (data) {
-            $("#tiposInvestimentoDataList").html(data);
-        },
-        error: function () {
-            alert("Falha ao obter a lista tipo investimento");
-        }
-    });
-});

@@ -12,26 +12,28 @@ $("#senha").keyup(function(event){
     }
 });
 
-function login(){
+function login() {
     let email = $("#email").val();
     let senha = $("#senha").val();
 
     $.ajax({
         type: "POST",
         url: "/login",
-        data:{
+        data: {
             email: email,
             senha: senha
         },
-        success: function(data){
-            if(data){
-                window.location.href="/ferramentas";
-            }else{
+        success: function (data) {
+            if (data === "consultor") {
+                window.location.href = "/ferramentas";
+            } else if (data === "cliente") {
+                window.location.href = "/home";
+            } else {
                 $('.alert-container').html('<div class="alert alert-danger" role="alert">Errooouuu!</div>');
                 alert("Errooouuu!");
             }
         },
-        error: function(){
+        error: function () {
             alert("Falha ao tentar realizar o login!");
         }
     });

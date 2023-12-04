@@ -29,17 +29,14 @@ public class C_Login {
         return "index";
     }
 
+
     @PostMapping("/login")
     @ResponseBody
     public ResponseEntity<String> postLogin(@RequestParam("email") String email,
                                             @RequestParam("senha") String senha,
                                             HttpSession session) {
-        M_Consultor consultor = S_Consultor.verificaLogin(email, senha);
+        M_Consultor consultor = S_Consultor.verificaLogin(email, senha, session);
         M_Cliente cliente = null;
-
-        if(consultor == null) {
-            cliente = S_Cliente.verificaLogin(email, senha);
-        }
 
         if (consultor != null) {
             session.setAttribute("id_consultor", consultor.getId_consultor());

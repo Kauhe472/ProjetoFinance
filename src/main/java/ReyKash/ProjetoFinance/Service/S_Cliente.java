@@ -3,6 +3,7 @@
     import ReyKash.ProjetoFinance.Model.M_Cliente;
     import ReyKash.ProjetoFinance.Model.M_Resposta;
     import ReyKash.ProjetoFinance.Repository.R_Cliente;
+    import jakarta.servlet.http.HttpSession;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.dao.DataIntegrityViolationException;
     import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@
     import java.time.temporal.ChronoUnit;
     import java.util.ArrayList;
     import java.util.List;
+    import java.util.stream.Collectors;
 
 
     @Service
@@ -37,22 +39,31 @@
             return cliente;
         }*/
 
-        public static List<M_Cliente> listarClientesDoConsultor(Long id_cliente) {
-            return r_cliente.buscaClientesPorConsultor(id_cliente);
-        }
-
-        public static ArrayList<M_Cliente> listarClientes() {
+        public static ArrayList<M_Cliente> listClientes() {
             return r_cliente.listClientes();
         }
 
-        public static M_Cliente verificaLogin(String email, String senha){
+        public static List<M_Cliente> getClientesByConsultor(Long id_consultor) {
+            List<M_Cliente> clientes = r_cliente.listClientes();
+            return clientes.stream()
+                    .filter(cliente -> cliente.getIdConsultor().equals(id_consultor))
+                    .collect(Collectors.toList());
+        }
 
-            if(S_Generico.textoEstaVazio(email)){
-                return null;
-            }else if(S_Generico.textoEstaVazio(senha)){
+        public static M_Cliente verificaLogin(String email, String senha, HttpSession session) {
+            if (S_Generico.textoEstaVazio(email) || S_Generico.textoEstaVazio(senha)) {
                 return null;
             }
-            return r_cliente.buscarEmailSenha(email, senha);
+
+            M_Cliente cliente = r_cliente.buscarEmailSenha(email, senha);
+
+            if (cliente != null) {
+                // Armazenar o ID do cliente na sessão após o login bem-sucedido
+                session.setAttribute("id_cliente", cliente.getId_cliente());
+                return cliente; // Somente retorna o cliente se as credenciais estiverem corretas
+            }
+
+            return null; // Retorna null se as credenciais estiverem incorretas
         }
 
         public static M_Resposta salvarCadastro(String nome, String email, String cpf,
