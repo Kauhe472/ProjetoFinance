@@ -7,10 +7,9 @@
 
 
 $(document).ready(function () {
-    // Fazer uma requisição AJAX para obter a lista de consultores do endpoint /consultores
     $.ajax({
         type: "GET",
-        url: "/consultores",
+        url: "/cadastroCliente",
         success: function (data) {
             // Preencher o datalist com os consultores obtidos
             $("#consultoresDataList").html(data);
@@ -20,72 +19,6 @@ $(document).ready(function () {
         }
     });
 });
-
-
-//function cadastrarCliente(){
-//    let cadastroValido = true
-//
-//	let nome = $("#nome").val();
-//	let email = $("#email").val();
-//	let cpf = $("#cpf").val();
-//	let data_nasc = $("#data_nasc").val();
-//	let senha = $("#senha").val();
-//	let confSenha = $("#confSenha").val();
-//	let id_consultor = $("#ConsultoresList option[value='" + $("#consultor").val() + "']").data("value");
-//
-//    if(campoVazio(nome)){
-//    		podeEnviar = false;
-//    		$(".nome").addClass("error-field");
-//    		showToast({sucesso:false,mensagem:"O nome precisa ser preenchido!"});
-//    	}
-//    	if(campoVazio(email)){
-//            		podeEnviar = false;
-//            		$(".email").addClass("error-field");
-//            		showToast({sucesso:false,mensagem:"É necessário informar um email!"});
-//            	}
-//    	if(!validarCPF(cpf)){
-//            podeEnviar = false;
-//            $(".cpf").addClass("error-field");
-//            showToast({sucesso:false,mensagem:"O CPF informado é inválido!"});
-//        }
-//        if(campoVazio(data_nasc)){
-//                    podeEnviar = false;
-//                    $(".data_nasc").addClass("error-field");
-//                    showToast({sucesso:false,mensagem:"A idade é invalida!"});
-//                }
-//    	if(campoVazio(senha)){
-//    		podeEnviar = false;
-//    		$(".senha").addClass("error-field");
-//    		showToast({sucesso:false,mensagem:"É necessário informar uma senha!"});
-//    	}else if(senha != confSenha){
-//    		podeEnviar = false;
-//    		$(".senha").addClass("error-field");
-//    		showToast({sucesso:false,mensagem:"A Senha e a confirmação de senha não conferem!"});
-//    	}
-//
-//
-//	if(cadastroValido){
-//            $.ajax({
-//                type: "POST",
-//                url: "/cadastro",
-//                data: {
-//                    nome: nome,
-//                    email: email,
-//                    cpf: cpf,
-//                    data_nasc: data_nasc,
-//                    senha: senha,
-//                    confSenha: confSenha,
-//                    id_consultor: id_consultor
-//                },
-//                success: function(data){
-//                    window.location.href="/homeLogado";
-//                },
-//                error: function(){
-//                    showToast({sucesso: false, mensagem: "Erro ao enviar o cadastro!"});
-//                }
-//            })
-//        }
-//}
 
 
  function validarCPF() {
@@ -175,7 +108,7 @@ function cadastrarCliente(){
 	if(cadastroValido){
             $.ajax({
                 type: "POST",
-                url: "/cadastro",
+                url: "/cadastroCliente",
                 data: {
                     nome: nome,
                     email: email,

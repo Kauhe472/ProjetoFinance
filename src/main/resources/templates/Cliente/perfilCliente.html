@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie.edge">
+  <script src="https://kit.fontawesome.com/d37c5443c6.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../../CSS/tabelaClientes.css">
+
+  <title>Tabela Clientes</title>
+
+</head>
+
+<body>
+<div th:each="cliente : ${clientes}" class="container centered">
+  <header class="perfil">
+    <div class="perfil-image">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="title">
+      <h1 th:text="${cliente.nome}"></h1>
+    </div>
+  </header>
+
+  <main class="projetos client-card">
+    <!-- Conteúdo do cliente ou tabela aqui -->
+  </main>
+
+  <div class="button-container">
+    <div class="button-container">
+      <a class="nav-link active" aria-current="page" href="/carteiraVirtual"
+      > Carteira Virtual</a>
+
+    </div>
+    <div class="floating-balloon" id="dadosPerfil">
+
+    </div>
+    <div class="floating-balloon" id="profileBalloon">
+      <p>Informações do perfil</p>
+    </div>
+
+    <button id="resumoButton" style="position: relative; z-index: 2;">Ver resumo</button>
+    <div class="floating-balloon" id="resumoBalloon" style="position: relative; z-index: 2; display: none;">
+
+      <textarea id="resumoTextArea" rows="4" cols="50"></textarea>
+      <div class="button-container-text">
+        <button class="save-button" id="saveButton">Atualizar Resumo</button>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <a class="nav-link active" aria-current="page" th:href="${'/carteiraInvestimento/'+cliente.id_cliente}"> Carteira de Investimentos</a>
+    </div>
+  </div>
+</div>
+<script>
+    const profileBalloon = document.getElementById("profileBalloon");
+        const resumoButton = document.getElementById("resumoButton");
+        const resumoBalloon = document.getElementById("resumoBalloon");
+        const saveButton = document.getElementById("saveButton");
+        const resumoTextArea = document.getElementById("resumoTextArea");
+
+        // Adicionado evento de clique para mostrar/ocultar o balão de resumo
+        resumoButton.addEventListener("click", () => {
+            resumoBalloon.style.display = (resumoBalloon.style.display === "block") ? "none" : "block";
+        });
+
+
+        // Adicionado evento de clique para mostrar o botão de salvar ao editar o texto
+        resumoTextArea.addEventListener("input", () => {
+            saveButton.style.display = "block";
+        });
+
+        // Adicionado evento de clique para salvar as alterações no texto e ocultar o balão
+        saveButton.addEventListener("click", () => {
+            resumoBalloon.style.display = "none"; // Oculta o balão ao clicar no botão de salvar
+
+            // Adicione a lógica para notificação aqui
+            alert("Atualização realizada com sucesso!");
+        });
+
+</script>
+</body>
+
+</html>

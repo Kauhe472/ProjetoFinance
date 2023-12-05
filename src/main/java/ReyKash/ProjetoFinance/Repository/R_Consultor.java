@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -20,5 +19,7 @@ public interface R_Consultor extends JpaRepository<M_Consultor, Long> {
     @Query(value = "SELECT * FROM consultores WHERE email = :email AND senha = :senha", nativeQuery = true)
     M_Consultor buscarEmailSenha (@Param("email") String email,
                                 @Param("senha") String senha);
+
+
 
 }

@@ -13,21 +13,24 @@
     import java.time.LocalDate;
     import java.time.format.DateTimeParseException;
     import java.time.temporal.ChronoUnit;
+    import java.util.Collections;
     import java.util.List;
+    import java.util.Optional;
 
     @Service
     public class S_Consultor {
         @Autowired
         private static R_Consultor r_consultor;
 
-
         public S_Consultor(R_Consultor r_consultor) {
             this.r_consultor = r_consultor;
         }
 
+
         public static List<M_Consultor> listarConsultores() {
             return r_consultor.listConsultores();
         }
+
 
         //public List<M_Cliente> obterClientesPorConsultor(Long id_consultor) {
             //return r_consultor.buscarClientesPorConsultor(id_consultor);

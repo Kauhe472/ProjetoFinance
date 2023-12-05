@@ -25,9 +25,9 @@ function login() {
         },
         success: function (data) {
             if (data === "consultor") {
-                window.location.href = "/ferramentas";
+                window.location.href = "/homeLogado";
             } else if (data === "cliente") {
-                window.location.href = "/home";
+                window.location.href = "/homeLogado";
             } else {
                 $('.alert-container').html('<div class="alert alert-danger" role="alert">Errooouuu!</div>');
                 alert("Errooouuu!");

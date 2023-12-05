@@ -61,7 +61,7 @@ function cadastrarConsultor() {
         tipo_consultor: tipo_consultor,
       },
       success: function (data) {
-        window.location.href = "/";
+        window.location.href = "/login";
         localStorage.setItem("mensagemCadastro", "Cadastro realizado com sucesso");
       },
       error: function () {

@@ -3,7 +3,7 @@ package ReyKash.ProjetoFinance.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tipo_investimento ")
+@Table(name = "tipo_investimento")
 public class M_TipoInvestimento {
 
     @Id
@@ -11,7 +11,6 @@ public class M_TipoInvestimento {
     private Long id_tipo_investimento;
 
     private String nome_investimento;
-
 
 
     public Long getId_tipo_investimento() {
@@ -29,4 +28,6 @@ public class M_TipoInvestimento {
     public void setNome_investimento(String nome_investimento) {
         this.nome_investimento = nome_investimento;
     }
+
+
 }

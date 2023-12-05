@@ -1,6 +1,4 @@
 
-
-
 function salvarInvestimento(){
     let investimentoValido = true
 
@@ -11,14 +9,14 @@ function salvarInvestimento(){
 	if(investimentoValido){
             $.ajax({
                     type: "POST",
-                    url: "/carteiraInvestimentos",
+                    url: "/carteiraInvestimento",
                     data: {
                         tipo: tipo,
                         tag: tag,
                         valor: valor,
                     },
                     success: function (data) {
-                        window.location.href = "/carteiraInvestimentos";
+                        window.location.href = "/carteiraInvestimento";
                         localStorage.setItem("mensagemCadastro", "Investimento Adicionado");
 
                     },

@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Adicione os scripts do Bootstrap e do jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,15 +21,13 @@
 <div class="container mt-5">
   <h1 class="text-center mb-4">Carteira de Investimentos</h1>
 
-
-  <!-- Formulário para adicionar novos investimentos -->
   <form id="formInvestimento">
     <div class="mb-3">
       <label for="tipo" class="form-label">Tipo de Investimento</label>
       <input list="tiposList" class="form-control" id="tipo" name="tipo" th:autocomplete="off" required>
       <datalist id="tiposList">
         <option selected disabled>Selecione o Tipo</option>
-          <option th:value="${tipo.nome_investimento}" th:text="${tipo.nome_investimento}"></option>
+          <option th:each="tipo : ${tipo_investimento}" th:data-value="${tipo.id_tipo_investimento}" th:value="${tipo.nome_investimento}"></option>
       </datalist>
     </div>
     <div class="mb-3">
@@ -42,16 +39,14 @@
       <input type="number" class="form-control" id="valor" name="valor" required>
     </div>
 
-
     <button type="button" class="btn btn-primary" onclick="adicionarInvestimento()">Adicionar Investimento</button>
-    <button type="button" class="btn btn-primary" onclick="salvarInvestimentos()">Salvar Investimento</button>
+    <button type="button" class="btn btn-primary" onclick="salvarInvestimento()">Salvar Investimento</button>
 
   </form>
 
   <div class="container mt-5">
     <h1 class="text-center mb-4">Gráfico de Pizza de Investimentos</h1>
 
-    <!-- Adicione o elemento canvas para o gráfico -->
     <div class="text-center">
       <canvas id="investimentoGrafico" width="400" height="400"></canvas>
     </div>
@@ -60,13 +55,15 @@
 </div>
 
 <script th:inline="javascript">
-  var tiposInvestimento = [[${tiposInvestimento}]];
+  var tipo_investimento = /*[[${tipo_investimento}]]*/ null;
 
-  tiposInvestimento.forEach(function (tipo) {
-    $("#tiposInvestimento").append("<option value='" + tipo.nome_investimento + "'>" + tipo.nome_investimento + "</option>");
-  });
+  if(tipo_investimento) {
+    tipo_investimento.forEach(function (tipo) {
+      $("#tipos_investimento").append("<option value='" + tipo.nome_investimento + "'>" + tipo.nome_investimento + "</option>");
+    });
+  }
 
-    function adicionarInvestimento() {
+  function adicionarInvestimento() {
     var tipoInvestimento = $("#tipo").val();
     var valorInvestimento = $("#valor").val();
 

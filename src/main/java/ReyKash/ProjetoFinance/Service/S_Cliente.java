@@ -11,8 +11,8 @@
     import java.time.LocalDate;
     import java.time.format.DateTimeParseException;
     import java.time.temporal.ChronoUnit;
-    import java.util.ArrayList;
     import java.util.List;
+    import java.util.Optional;
     import java.util.stream.Collectors;
 
 
@@ -24,6 +24,17 @@
 
         public S_Cliente(R_Cliente r_cliente) {
             this.r_cliente = r_cliente;
+        }
+
+
+        public M_Cliente getClienteById(Long idCliente) {
+            Optional<M_Cliente> clienteOptional = r_cliente.findById(idCliente);
+
+            if (clienteOptional.isPresent()) {
+                return clienteOptional.get();
+            } else {
+                return null;
+            }
         }
 
 
@@ -39,15 +50,9 @@
             return cliente;
         }*/
 
-        public static ArrayList<M_Cliente> listClientes() {
-            return r_cliente.listClientes();
-        }
 
-        public static List<M_Cliente> getClientesByConsultor(Long id_consultor) {
-            List<M_Cliente> clientes = r_cliente.listClientes();
-            return clientes.stream()
-                    .filter(cliente -> cliente.getIdConsultor().equals(id_consultor))
-                    .collect(Collectors.toList());
+        public List<M_Cliente> getClientesByConsultor(Long idConsultor) {
+            return r_cliente.buscaClientesPorConsultor(idConsultor);
         }
 
         public static M_Cliente verificaLogin(String email, String senha, HttpSession session) {
