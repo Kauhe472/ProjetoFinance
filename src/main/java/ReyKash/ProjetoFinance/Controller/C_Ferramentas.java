@@ -1,8 +1,8 @@
 package ReyKash.ProjetoFinance.Controller;
 
-import ReyKash.ProjetoFinance.Model.M_CarteiraInvestimento;
 import ReyKash.ProjetoFinance.Model.M_Cliente;
-import ReyKash.ProjetoFinance.Service.S_CarteiraInvestimento;
+import ReyKash.ProjetoFinance.Model.M_Consultor;
+import ReyKash.ProjetoFinance.Model.M_TipoInvestimento;
 import ReyKash.ProjetoFinance.Service.S_Cliente;
 import ReyKash.ProjetoFinance.Service.S_Consultor;
 import ReyKash.ProjetoFinance.Service.S_TipoInvestimento;
@@ -24,15 +24,12 @@ public class C_Ferramentas {
     private final S_TipoInvestimento s_tipoInvestimento;
     private final S_Consultor s_consultor;
     private final S_Cliente s_cliente;
-    private final S_CarteiraInvestimento s_carteiraInvestimento;
 
     @Autowired
-    public C_Ferramentas(S_TipoInvestimento s_tipoInvestimento, S_Consultor s_consultor,
-                         S_Cliente s_cliente, S_CarteiraInvestimento s_carteiraInvestimento) {
+    public C_Ferramentas(S_TipoInvestimento s_tipoInvestimento, S_Consultor s_consultor, S_Cliente s_cliente) {
         this.s_tipoInvestimento = s_tipoInvestimento;
         this.s_consultor = s_consultor;
         this.s_cliente = s_cliente;
-        this.s_carteiraInvestimento = s_carteiraInvestimento;
     }
 
     @GetMapping("/ferramentas")
@@ -51,26 +48,18 @@ public class C_Ferramentas {
 
 
     @GetMapping("/carteiraInvestimento/{id_cliente}")
-    public String getCarteiraInvestimento(@PathVariable("id_cliente") Long id_cliente, Model model, HttpSession session) {
+    public String getCarteiraInvestimento(@PathVariable("id_cliente") Long idCliente, Model model, HttpSession session) {
         if (session.getAttribute("consultor") != null) {
-            model.addAttribute("consultor", session.getAttribute("id_consultor"));
+            model.addAttribute("consultor",session.getAttribute("id_consultor"));
             return "Ferramentas/carteiraInvestimento";
-        } else if (session.getAttribute("cliente") != null) {
-            // Lógica para buscar a carteira de investimento do cliente com o id_cliente fornecido
-            M_CarteiraInvestimento carteiraInvestimento = s_carteiraInvestimento.buscarCarteiraInvestimento(id_cliente);
-
-            if (carteiraInvestimento != null) {
-                model.addAttribute("cliente", carteiraInvestimento);
-                return "Ferramentas/carteiraInvestimento";
-            } else {
-                // Se a carteira de investimento não for encontrada, redirecione para alguma página de erro
-                return "redirect:/erro";
-            }
+        }
+        else if (session.getAttribute("cliente") != null) {
+            model.addAttribute("cliente",session.getAttribute("id_cliente"));
+            return "Ferramentas/carteiraInvestimento";
         } else {
             return "redirect:/";
         }
     }
-
 
     @PostMapping("/carteiraInvestimento")
     public ResponseEntity<String> adicionarInvestimento(@RequestParam String tipo,
@@ -101,7 +90,6 @@ public class C_Ferramentas {
             return "redirect:/";
         }
     }
-
 
 
     @GetMapping("/calculadora")

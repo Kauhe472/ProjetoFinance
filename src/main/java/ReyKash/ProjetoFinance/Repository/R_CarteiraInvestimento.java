@@ -9,7 +9,5 @@ import java.util.Optional;
 @Repository
 public interface R_CarteiraInvestimento extends JpaRepository<M_CarteiraInvestimento, Long> {
 
-    Optional<M_CarteiraInvestimento> findByIdCliente(Long idCliente);
-
 
 }

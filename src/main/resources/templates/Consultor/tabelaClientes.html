@@ -14,6 +14,9 @@
 </head>
 
 <body>
+
+
+
 <div th:each="cliente : ${clientes}" class="container centered">
     <header class="perfil">
         <div class="perfil-image">
@@ -24,9 +27,19 @@
                 </svg>
             </div>
         </div>
-        <div class="title">
-            <h1 th:text="${cliente.nome}"></h1>
+
+        <div class="row">
+            <div class="title col-md-12">
+                <h1 th:text="${cliente.nome}"></h1>
+            </div>
+            <div class="col-md-6">
+                <p>Email: <span th:text="${cliente.email}"></span></p>
+            </div>
+            <div class="col-md-6">
+                <p>Data de Nascimento: <span th:text="${cliente.data_nasc}"></span></p>
+            </div>
         </div>
+
     </header>
 
     <main class="projetos client-card">
@@ -35,8 +48,7 @@
 
     <div class="button-container">
         <div class="button-container">
-            <a class="nav-link active" aria-current="page" href="/carteiraVirtual"
-            > Carteira Virtual</a>
+            <a class="nav-link active" aria-current="page" href="/carteiraVirtual"> Carteira Virtual</a>
 
         </div>
         <div class="floating-balloon" id="dadosPerfil">
@@ -61,7 +73,8 @@
     </div>
 </div>
 <script>
-    const profileBalloon = document.getElementById("profileBalloon");
+
+        const profileBalloon = document.getElementById("profileBalloon");
         const resumoButton = document.getElementById("resumoButton");
         const resumoBalloon = document.getElementById("resumoBalloon");
         const saveButton = document.getElementById("saveButton");

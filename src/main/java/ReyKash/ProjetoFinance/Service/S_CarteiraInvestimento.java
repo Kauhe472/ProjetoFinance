@@ -12,7 +12,7 @@ import java.util.Optional;
 public class S_CarteiraInvestimento {
 
     @Autowired
-    private static R_CarteiraInvestimento r_Carteira_investimento;
+    private R_CarteiraInvestimento r_Carteira_investimento;
 
 
     @Autowired
@@ -28,12 +28,5 @@ public class S_CarteiraInvestimento {
         return r_Carteira_investimento.save(investimento);
     }
 
-    public M_CarteiraInvestimento buscarCarteiraInvestimento(Long id_cliente) {
-        // Lógica para buscar a carteira de investimento por id_cliente
-        Optional<M_CarteiraInvestimento> carteiraInvestimentoOptional = r_Carteira_investimento.findByIdCliente(id_cliente);
-
-        // Retorna a carteira de investimento se encontrada, ou null se não encontrada
-        return carteiraInvestimentoOptional.orElse(null);
-    }
 
 }

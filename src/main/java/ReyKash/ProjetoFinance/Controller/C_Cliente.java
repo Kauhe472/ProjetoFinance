@@ -33,6 +33,10 @@
             return S_Cliente.salvarCadastro(nome, email, cpf, data_nasc, senha, confSenha);
         }
 
+        @GetMapping("/perfilCliente")
+        public String getPerfilCliente(){
+            return "Consultor/perfilCliente";
+        }
 
 
     }
