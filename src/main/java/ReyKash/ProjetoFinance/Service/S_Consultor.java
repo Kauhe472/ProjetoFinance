@@ -31,6 +31,14 @@
             return r_consultor.listConsultores();
         }
 
+        public static M_Consultor obterNomeConsultor(String nome){
+            return r_consultor.obterNomeConsultor(nome);
+        }
+
+        public M_Consultor buscarConsultorPorId(Long idConsultor) {
+            Optional<M_Consultor> consultorOptional = r_consultor.findById(idConsultor);
+            return consultorOptional.orElse(null);
+        }
 
         //public List<M_Cliente> obterClientesPorConsultor(Long id_consultor) {
             //return r_consultor.buscarClientesPorConsultor(id_consultor);

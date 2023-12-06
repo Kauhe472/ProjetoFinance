@@ -1,5 +1,6 @@
 package ReyKash.ProjetoFinance.Controller;
 
+import ReyKash.ProjetoFinance.Model.M_Consultor;
 import ReyKash.ProjetoFinance.Model.M_Resposta;
 import ReyKash.ProjetoFinance.Service.S_Consultor;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.Principal;
 
 
 @Controller
@@ -48,8 +51,21 @@ public class C_Consultor {
     }*/
 
     @GetMapping("/perfilConsultor")
-    public String getPeRFIL(){
-        return "Consultor/perfilConsultor";
+    public String getPerfilConsultor(Model model, HttpSession session) {
+        if (session.getAttribute("consultor") != null) {
+            Long idConsultor = (Long) session.getAttribute("id_consultor");
+            M_Consultor consultor = s_consultor.buscarConsultorPorId(idConsultor);
+            if (consultor != null) {
+                model.addAttribute("consultor", consultor);
+                return "Consultor/perfilConsultor";
+            } else {
+                return "redirect:/erro";
+            }
+        } else {
+            return "redirect:/";
+        }
     }
+
+
 
 }

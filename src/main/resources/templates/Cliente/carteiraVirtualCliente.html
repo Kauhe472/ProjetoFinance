@@ -16,11 +16,8 @@
             <div class="front">
                 <label >Nome da pessoa</label>
             </div>
-            <div class="back">
-                <label>Número do Cartão</label>
-            </div>
             <div class="front">
-                <p>Saldo: <span id="saldo"></span></p>
+                <p style="font-size: 2em;">Saldo: <span id="saldo"></span></p>
             </div>
         </div>
     </div>
@@ -29,24 +26,26 @@
         <thead>
         <tr>
             <th><span>Data da alteração</span></th>
-            <th><span>Descrição </span></th>
-            <th><span>valor</span></th>
+            <th><span>Descrição</span></th>
+            <th><span>Valor</span></th>
             <th><span>Tipo</span></th>
-            <th><span>entrada ou saída</span></th>
+            <th><span>Entrada ou saída</span></th>
         </tr>
         </thead>
         <tbody>
+        <!-- Aqui você pode adicionar mais linhas conforme necessário -->
         </tbody>
     </table>
+
 </div>
 
 <div id="wrapper">
     <h1>Tabela de gerenciamento</h1>
     <button id="editTableButton">Editar Tabela</button>
     <div id="inputFields" style="display: none;">
-        <input type="text" id="data" placeholder="Data">
+        <input type="date" id="data" placeholder="Data">
         <input type="text" id="descricao" placeholder="Descrição">
-        <input type="text" id="valor" placeholder="Valor">
+        <input type="number" id="valor" placeholder="Valor">
         <input type="text" id="tipo" placeholder="Tipo">
         <input type="text" id="gastoOuGanho" placeholder="Gasto ou Ganho">
         <button id="addRowButton">Adicionar Linha</button>

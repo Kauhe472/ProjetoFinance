@@ -39,6 +39,33 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita que o formulário seja enviado diretamente
+
+        // Validação simples do e-mail
+        const emailInput = document.getElementById("email");
+        const emailValue = emailInput.value.trim();
+
+        if (!isValidEmail(emailValue)) {
+            alert("Por favor, insira um e-mail válido.");
+            return;
+        }
+
+        // Simula o envio bem-sucedido
+        alert("Mensagem enviada com sucesso!");
+
+        // Lógica adicional para enviar os dados do formulário para o servidor
+    });
+
+    function isValidEmail(email) {
+        // Lógica simples de validação de e-mail
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+</script>
+
 </body>
 
 </html>

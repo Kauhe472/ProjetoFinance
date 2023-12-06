@@ -282,3 +282,10 @@ h1 {
 #inputFields button:hover {
     background: #094688; /* Cor mais escura ao passar o mouse */
 }
+
+#saldo {
+            font-size: 3vw; /* Ou ajuste o valor conforme necessário */
+        }
+                 .front p {
+                font-size: 2em; /* Ajuste o valor conforme necessário */
+            }

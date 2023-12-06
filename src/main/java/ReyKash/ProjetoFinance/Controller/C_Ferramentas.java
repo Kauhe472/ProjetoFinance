@@ -71,21 +71,29 @@ public class C_Ferramentas {
 
     @GetMapping("/tabelaClientes")
     public String getTabelaClientes(Model model, HttpSession session) {
-        Long id_consultor = (Long) session.getAttribute("id_consultor");
-        List<M_Cliente> clientes = s_cliente.getClientesByConsultor(id_consultor);
-        model.addAttribute("clientes", clientes);
-        return "Consultor/tabelaClientes";
+        if (session.getAttribute("consultor") != null) {
+            Long id_consultor = (Long) session.getAttribute("id_consultor");
+            List<M_Cliente> clientes = s_cliente.getClientesByConsultor(id_consultor);
+            model.addAttribute("clientes", clientes);
+            return "Consultor/tabelaClientes";
+        }
+        else if (session.getAttribute("cliente") != null) {
+            model.addAttribute("cliente",session.getAttribute("id_cliente"));
+            return "Cliente/perfilCliente";
+        } else {
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/carteiraVirtual")
     public String getCarteiraVirtual(Model model, HttpSession session) {
         if (session.getAttribute("consultor") != null) {
             model.addAttribute("consultor",session.getAttribute("id_consultor"));
-            return "Ferramentas/carteiraVirtual";
+            return "Consultor/carteiraVirtual";
         }
         else if (session.getAttribute("cliente") != null) {
             model.addAttribute("cliente",session.getAttribute("id_cliente"));
-            return "Ferramentas/carteiraVirtual";
+            return "Cliente/carteiraVirtualCliente";
         } else {
             return "redirect:/";
         }

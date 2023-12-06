@@ -35,8 +35,7 @@
 
         @GetMapping("/perfilCliente")
         public String getPerfilCliente(){
-            return "Consultor/perfilCliente";
+            return "Cliente/perfilCliente";
         }
-
 
     }

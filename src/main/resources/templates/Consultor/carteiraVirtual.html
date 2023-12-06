@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../CSS/carteiraVirtual.css">
+
+    <title>Cartão com Flip</title>
+
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-inner">
+            <div class="front">
+                <label >Nome da pessoa</label>
+            </div>
+            <div class="front">
+                <p style="font-size: 2em;">Saldo: <span id="saldo"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <table id="keywords" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th><span>Data da alteração</span></th>
+            <th><span>Descrição</span></th>
+            <th><span>Valor</span></th>
+            <th><span>Tipo</span></th>
+            <th><span>Entrada ou saída</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Aqui você pode adicionar mais linhas conforme necessário -->
+        </tbody>
+    </table>
+
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const saldoElement = document.getElementById("saldo");
+    let saldo = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+    saldoElement.textContent = saldo.toFixed(2);
+
+    const editTableButton = document.getElementById("editTableButton");
+    const inputFields = document.getElementById("inputFields");
+    const addRowButton = document.getElementById("addRowButton");
+    const tbody = document.querySelector("#keywords tbody");
+
+    // Dados pré-definidos
+    const predefinedData = [
+        { data: "2023-01-01", descricao: "Café", valor: 5.00, tipo: "Alimentação", gastoOuGanho: "Gasto" },
+        { data: "2023-01-02", descricao: "Salário", valor: 1500.00, tipo: "Renda", gastoOuGanho: "Ganho" }
+        // Adicione mais linhas conforme necessário
+    ];
+
+    // Adiciona os dados pré-definidos à tabela
+    predefinedData.forEach(data => {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td class="lalign">${data.data}</td>
+            <td>${data.descricao}</td>
+            <td>${data.valor.toFixed(2)}</td>
+            <td>${data.tipo}</td>
+            <td>${data.gastoOuGanho}</td>
+        `;
+        tbody.appendChild(newRow);
+    });
+
+    editTableButton.addEventListener("click", () => {
+        inputFields.style.display = "block";
+    });
+
+    addRowButton.addEventListener("click", () => {
+        const data = document.getElementById("data").value;
+        const descricao = document.getElementById("descricao").value;
+        const valor = parseFloat(document.getElementById("valor").value);
+        const tipo = document.getElementById("tipo").value;
+        const gastoOuGanho = document.getElementById("gastoOuGanho").value;
+
+        if (gastoOuGanho.toLowerCase() === "ganho") {
+            saldo += valor;
+        } else if (gastoOuGanho.toLowerCase() === "gasto") {
+            saldo -= valor;
+        }
+
+        saldoElement.textContent = saldo.toFixed(2);
+
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td class="lalign">${data}</td>
+            <td>${descricao}</td>
+            <td>${valor.toFixed(2)}</td>
+            <td>${tipo}</td>
+            <td>${gastoOuGanho}</td>
+        `;
+
+        tbody.appendChild(newRow);
+
+        document.getElementById("data").value = "";
+        document.getElementById("descricao").value = "";
+        document.getElementById("valor").value = "";
+        document.getElementById("tipo").value = "";
+        document.getElementById("gastoOuGanho").value = "";
+    });
+});
+
+</script>
+</body>
+</html>
